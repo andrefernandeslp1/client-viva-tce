@@ -1,0 +1,22 @@
+{
+  "servico": [
+    {
+      "id": 0,
+      "nome": "Corte de Cabelo",
+      "descricao": "Corte de cabelo masculino",
+      "preco": 30.00,
+      "imagens": [
+        "https://www.guiadasemana.com.br/contentFiles/image/opt_w768h480/2017/02/FEA/49393_shutterstock-barbearia.jpg"
+      ],
+      "fornecedorId": 0
+    },
+    {
+      "id": 0,
+      "nome": "Pilates",
+      "descricao": "'Pilates para iniciantes'",
+      "preco": 100.00,
+      "imagens": ["https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"],
+      "fornecerId": 0
+    }
+  ]
+}
