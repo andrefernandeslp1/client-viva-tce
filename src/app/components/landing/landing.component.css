@@ -1,38 +1,125 @@
-.landing-0 {
+*:not(button) {
+  color: var(--primary);
+  --form-width: 20vw;
+}
+
+body {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  background-color: #3d9970;
-  /* width: 100vw; */
+  align-items: center;
+  animation: slide-down 2.5s;
 }
 
-.landing {
+form *, .segmented-btn {
+  margin-bottom: 15px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.segmented-btn, .segmented-btn * {
+  border-radius: 25px;
+}
+
+.segmented-btn * {
+  font-size: 15px;
+  border: none;
+  width: calc(var(--form-width)/2);
+}
+
+.segmented-btn {
+  background-color: lightgray;
+}
+
+.selected {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  border-radius: 25px;
+  font-size: 25px;
+  padding: 10px;
+  transition: all 200ms ease-in;
+}
+
+.not-selected {
+  background-color: transparent;
+  color: var(--primary);
+  padding: 10px;
+}
+
+.toggle {
+  animation: toggle 1s ease-in;
+}
+
+.toggle:hover {
+  transform: translateX(-5%);
+}
+
+.toggle-rev {
+  animation: toggle-rev 1s ease-in;
+}
+
+.toggle-rev:hover {
+  transform: translateX(5%);
+}
+
+@keyframes toggle {
+  from {
+    transform: translateX(-95%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes toggle-rev {
+  from {
+    transform: translateX(95%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+header {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  max-width: 1200px;
-  /* min-width: 600px; */
-  width: 100%;
-  margin: 0 auto;
-
+  justify-content: center;
 }
 
-.texto {
+h1 {
+  font-weight: bolder;
+  font-size: 75px;
+  align-self: center;
+  margin-left: 25px;
+}
+
+hr {
+  border-left: 3px solid;
+  opacity: 1;
+  border-color: var(--primary);
+  border-radius: 25px;
+}
+
+form {
   display: flex;
-  /* flex-direction: column; */
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-  color: white;
+  flex-direction: column;
+  background-color: var(--primary-container);
+  animation: fade 1.5s ease-in-out;
 }
 
 img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  height: 80px;
-  margin: auto;
+  height: 15vh;
+}
+
+@media screen and (max-width:900px) {
+  * {
+    --form-width: 60vw;
+  }
+
+  h1 {
+    font-size: 25px;
+  }
 }
