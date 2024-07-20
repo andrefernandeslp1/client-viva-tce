@@ -4,9 +4,15 @@
 .dropdown-menu {
   display: none;
   position: absolute;
-  background-color: #ffc107;
+  background-color: var(--secondary);
   box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
 }
 .dropdown-menu a {
-  color: #343a40;
+  color: var(--on-secondary);
+}
+
+ul, ul a {
+  background-color: var(--secondary);
+  color: var(--on-secondary);
+  text-decoration: none;
 }

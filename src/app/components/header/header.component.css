@@ -1,15 +1,66 @@
-.container {
-  background-color: #3d9970;
-  color: white;
-}
-
-.header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+header {
+  background-color: var(--primary-container);
+  width: var(--header-width);
+  height: var(--header--height);
+  color: var(--header-color);
   align-items: center;
+  border-bottom: var(--border-size) solid var(--secondary);
 }
 
-i {
+header *:not(i) {
+  margin: 10px;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+hr {
+  border-radius: 25px;
+  border-left: 1px solid var(--header-color);;
+  opacity: 1;
+  height: 75%;
+}
+
+header div {
+  float: right;
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+img {
+  height: calc(var(--header--height) - var(--border-size));
+}
+
+.user, img {
   cursor: pointer;
+}
+
+* {
+  --border-size: 5px;
+  --header-color: var(--primary);
+}
+
+
+p {
+  font-size: 25px;
+  font-weight: bolder;
+}
+
+.fa-circle-user {
+  font-size: 50px;
+}
+.nav-item:hover .dropdown-menu {
+  top:5vh;
+  display: block;
+}
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: var(--primary-container);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+}
+.dropdown-menu a {
+  color: var(--on-primary-container);
+  width: 90%;
 }

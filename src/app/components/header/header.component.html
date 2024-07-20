@@ -1,23 +1,16 @@
 
-<div class="container">
-  <!-- <p>header works!</p> -->
-  <div class="header p-3">
-    <img src="../../assets/viva-tce-high-resolution-logo-transparent.png" routerLink="/home" alt="logo" width="auto" height="40" style="cursor:pointer; margin: 15px 0 15px 0;" >
-    <div class="user">
-      <!-- @if(usuario().email == undefined || usuario().email == '') {
-        <p routerLink="/landing" style="cursor:pointer;">Faça Login!</p>
-      }
-      @else { -->
-        <p>Bem vindo, {{ usuario().nome }}</p>
-      <!-- } -->
-      <div style="float:right">
-        <i class="fa-solid fa-eye p-1" routerLink="/usuario/{{usuario().id}}/perfil"></i>
-        <i class="fa-solid fa-pen p-1"></i>
-        <i class="fa-solid fa-right-from-bracket p-1" (click)="logout()" routerLink="/landing"></i>
-      </div>
-
+<header class="d-flex flex-row shadow">
+  <img [src]="tceLogo" routerLink="/servicos" alt="Logo do TCE-RN">
+  <hr/>
+  <h1>VIVA TCE</h1>
+  <div class="d-flex float-right user nav-item dropdown">
+    <p>{{usuario().nome}}</p>
+    <i class="fa-solid fa-circle-user"></i>
+    <div class="dropdown-menu">
+        <a class="dropdown-item"><i class="fa-solid fa-edit"></i> Editar Perfil</a>
+        <a class="dropdown-item"><i class="fa-solid fa-sign-out"></i> Sair da conta</a>
     </div>
   </div>
-</div>
+</header>
 
 
