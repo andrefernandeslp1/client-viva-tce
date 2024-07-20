@@ -11,4 +11,11 @@ import { MenuComponent } from "../../menu/menu.component";
 })
 export class ListFornecedorComponent {
 
+
+
+
+
+
+
+
 }

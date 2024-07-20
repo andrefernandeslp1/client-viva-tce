@@ -11,4 +11,27 @@ import { MenuComponent } from "../../menu/menu.component";
 })
 export class FormUsuarioComponent {
 
+  // usuarioService = inject(UsuarioService);
+
+  // fornecedores!: WritableSignal<Fornecedor[]>;
+
+  constructor() {
+    // this.roles = this.usuarioService.roles;
+    // this.fornecedores = this.fornecedorService.fornecedores;
+   }
+
+  // ngOnInit() {
+  //   this.listarFornecedores();
+  //   this.id = this.route.snapshot.paramMap.get('id');
+  // }
+
+
+
+  // listarFornecedores() {
+  //   this.fornecedorService.list().subscribe(fornecedores => {
+  //     this.fornecedores.set(fornecedores);
+  //     console.log(fornecedores);
+  //   });
+  // }
+
 }

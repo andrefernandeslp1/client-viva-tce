@@ -4,19 +4,53 @@
       "id": 0,
       "nome": "Corte de Cabelo",
       "descricao": "Corte de cabelo masculino",
-      "preco": 30.00,
+      "preco": 30,
       "imagens": [
         "https://www.guiadasemana.com.br/contentFiles/image/opt_w768h480/2017/02/FEA/49393_shutterstock-barbearia.jpg"
       ],
       "fornecedorId": 0
     },
     {
-      "id": 0,
+      "id": 1,
       "nome": "Pilates",
       "descricao": "'Pilates para iniciantes'",
-      "preco": 100.00,
-      "imagens": ["https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"],
+      "preco": 100,
+      "imagens": [
+        "https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"
+      ],
       "fornecerId": 0
+    },
+    {
+      "nome": "teste",
+      "descricao": "teste",
+      "preco": 100,
+      "imagens": [
+        "tste"
+      ],
+      "fornecedorId": 0,
+      "id": 4
+    },
+    {
+      "nome": "x",
+      "descricao": "x",
+      "preco": 1,
+      "imagens": "x",
+      "fornecedorId": -1,
+      "id": 5
+    }
+  ],
+  "fornecedores": [
+    {
+      "id": 0,
+      "nome": "Barbearia do Zé",
+      "contato": "(11)99999-9999",
+      "logo": "https://www.shutterstock.com/shutterstock/photos/2467077677/display_1500/stock-vector-vintage-barber-shop-logo-haircut-salon-retro-design-old-hairdresser-badge-with-barber-pole-2467077677.jpg"
+    },
+    {
+      "id": 1,
+      "nome": "Pilates da Maria",
+      "contato": "(11)99999-9999",
+      "logo": "https://www.shutterstock.com/shutterstock/photos/2275403891/display_1500/stock-vector-yoga-asana-one-line-drawing-women-body-shape-fitness-workout-concept-continuous-art-linear-2275403891.jpg"
     }
   ]
 }

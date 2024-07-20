@@ -16,6 +16,7 @@ export class AppService {
     nome: 'John Doe',
     email: 'john@gmail.com',
     role: 'admin',
+    fornecedorId: -1
   });
 
   public API_URL = 'http://localhost:3000';
