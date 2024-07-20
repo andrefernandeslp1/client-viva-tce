@@ -39,6 +39,12 @@ export const routes: Routes = [
     data: {expectedRoles: ['vendedor']}
   },
   {
+    path: 'servico/:id/form',
+    component: FormServicoComponent,
+    canActivate: [authGuard, roleGuard],
+    data: {expectedRoles: ['vendedor']}
+  },
+  {
     path: 'servico/:id/detalhes',
     component: DetalhesServicoComponent,
     canActivate: [authGuard]
@@ -58,6 +64,12 @@ export const routes: Routes = [
       data: {expectedRoles: ['admin']}
     },
     {
+      path: 'usuario/:id/form',
+      component: FormUsuarioComponent,
+      canActivate: [authGuard, roleGuard],
+      data: {expectedRoles: ['admin', 'cliente']}
+    },
+    {
       path: 'usuario/:id/perfil',
       component: PerfilUsuarioComponent,
       canActivate: [authGuard, roleGuard],
@@ -68,8 +80,7 @@ export const routes: Routes = [
     {
       path: 'fornecedor',
       component: ListFornecedorComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin', 'cliente']}
+      canActivate: [authGuard],
     },
     {
       path: 'fornecedor/form',
@@ -78,12 +89,15 @@ export const routes: Routes = [
       data: {expectedRoles: ['admin']}
     },
     {
+      path: 'fornecedor/:id/form',
+      component: FormFornecedorComponent,
+      canActivate: [authGuard, roleGuard],
+      data: {expectedRoles: ['admin']}
+    },
+    {
       path: 'fornecedor/:id/perfil',
       component: PerfilFornecedorComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin', 'cliente']}
+      canActivate: [authGuard],
     },
-
-    { path: 'header', component: HeaderComponent }, //PARA TESTES SOMENTE, POIS JÁ ESTARÁ INCLUÍDO NOS COMPONENTES
 
 ];
