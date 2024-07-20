@@ -17,6 +17,10 @@ import { AppService } from '../../service/app.service';
 })
 export class LandingComponent {
 
+  logoTce = "./assets/tce.jpg"
+
+  isLogin = true
+
   form: FormGroup;
 
   service = inject(AppService);
@@ -30,6 +34,10 @@ export class LandingComponent {
       email: [null],
       password: [null]
     });
+  }
+
+  select(){
+    this.isLogin = !this.isLogin
   }
 
   onSignUp() {

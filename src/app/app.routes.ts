@@ -16,88 +16,96 @@ import { HeaderComponent } from './components/header/header.component';
 
 export const routes: Routes = [
 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-  { path: 'landing', component: LandingComponent },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/login'
+  },
+
+  {
+    path: 'login',
+    component: LandingComponent,
+  },
 
   { path: 'unauthorized', component: UnauthorizedComponent },
 
-  { path: 'home',
-    component: ListServicoComponent,
-    canActivate: [authGuard]
-  },
-
-  // SERVIÇO
-  { path: 'servico',
-    component: ListServicoComponent,
-    canActivate: [authGuard]
-  },
-  {
-    path: 'servico/form',
-    component: FormServicoComponent,
-    canActivate: [authGuard, roleGuard],
-    data: {expectedRoles: ['vendedor']}
-  },
-  {
-    path: 'servico/:id/form',
-    component: FormServicoComponent,
-    canActivate: [authGuard, roleGuard],
-    data: {expectedRoles: ['vendedor']}
-  },
-  {
-    path: 'servico/:id/detalhes',
-    component: DetalhesServicoComponent,
-    canActivate: [authGuard]
+  { path: 'servicos',
+    loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
+    canActivate: [authGuard],
+    children: [
+      {
+        path: 'new',
+        component: FormServicoComponent,
+        canActivate: [authGuard, roleGuard],
+        data: {expectedRoles: ['vendedor']}
+      },
+      {
+        path: ':id/edit',
+        component: FormServicoComponent,
+        canActivate: [authGuard, roleGuard],
+        data: {expectedRoles: ['vendedor']}
+      },
+      {
+        path: ':id',
+        component: DetalhesServicoComponent,
+        canActivate: [authGuard]
+      },
+    ]
   },
 
     // USUÁRIO
     {
-      path: 'usuario',
-      component: ListUsuarioComponent,
+      path: 'usuarios',
+      loadComponent: () => import('./components/usuario/list-usuario/list-usuario.component').then(m => m.ListUsuarioComponent),
       canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin']}
-    },
-    {
-      path: 'usuario/form',
-      component: FormUsuarioComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin']}
-    },
-    {
-      path: 'usuario/:id/form',
-      component: FormUsuarioComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin', 'cliente']}
-    },
-    {
-      path: 'usuario/:id/perfil',
-      component: PerfilUsuarioComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin', 'cliente']}
+      data: {expectedRoles: ['admin']},
+      children: [
+        {
+          path: 'new',
+          component: FormUsuarioComponent,
+          canActivate: [authGuard, roleGuard],
+          data: {expectedRoles: ['admin']}
+        },
+        {
+          path: ':id/edit',
+          component: FormUsuarioComponent,
+          canActivate: [authGuard, roleGuard],
+          data: {expectedRoles: ['admin', 'cliente']}
+        },
+        {
+          path: ':id/perfil',
+          component: PerfilUsuarioComponent,
+          canActivate: [authGuard, roleGuard],
+          data: {expectedRoles: ['admin', 'cliente']}
+        },
+      ]
     },
 
     // FORNECEDOR
     {
-      path: 'fornecedor',
-      component: ListFornecedorComponent,
+      path: 'fornecedores',
+      loadComponent: () => import('./components/fornecedor/list-fornecedor/list-fornecedor.component').then(m => m.ListFornecedorComponent),
       canActivate: [authGuard],
-    },
-    {
-      path: 'fornecedor/form',
-      component: FormFornecedorComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin']}
-    },
-    {
-      path: 'fornecedor/:id/form',
-      component: FormFornecedorComponent,
-      canActivate: [authGuard, roleGuard],
-      data: {expectedRoles: ['admin']}
-    },
-    {
-      path: 'fornecedor/:id/perfil',
-      component: PerfilFornecedorComponent,
-      canActivate: [authGuard],
+      children: [
+        {
+          path: 'new',
+          component: FormFornecedorComponent,
+          canActivate: [authGuard, roleGuard],
+          data: {expectedRoles: ['admin']}
+        },
+        {
+          path: ':id/edit',
+          component: FormFornecedorComponent,
+          canActivate: [authGuard, roleGuard],
+          data: {expectedRoles: ['admin']}
+        },
+        {
+          path: ':id',
+          component: PerfilFornecedorComponent,
+          canActivate: [authGuard],
+        },
+      ]
     },
 
 ];
