@@ -21,7 +21,15 @@ export class AppService {
 
   public API_URL = 'http://localhost:3000';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    const token = localStorage.getItem('jwt-token');
+    if (token) {
+      this.userLogged().id = this.jwtTokenService.getUserId();
+      this.userLogged().nome = this.jwtTokenService.getUser();
+      this.userLogged().email = this.jwtTokenService.getEmail();
+      this.userLogged().role = this.jwtTokenService.getRole();
+    }
+   }
 
   signup(usuario: Usuario): Observable<HttpResponse<any>>{
     return this.httpClient.post<any>(this.API_URL + "/signup", usuario, { observe: 'response' }).pipe(

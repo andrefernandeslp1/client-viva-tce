@@ -21,22 +21,45 @@
       "fornecerId": 0
     },
     {
-      "nome": "teste",
-      "descricao": "teste",
+      "nome": "teste2",
+      "descricao": "teste2",
       "preco": 100,
+      "fornecedorId": -1,
       "imagens": [
-        "tste"
+        "https://www.shutterstock.com/shutterstock/photos/1922200124/display_1500/stock-photo-medical-science-laboratory-portrait-of-beautiful-black-scientist-looking-under-microscope-does-1922200124.jpg"
       ],
-      "fornecedorId": 0,
-      "id": 4
+      "id": 7
     },
     {
-      "nome": "x",
-      "descricao": "x",
-      "preco": 1,
-      "imagens": "x",
+      "nome": "teste3",
+      "descricao": "teste3",
+      "preco": 100,
       "fornecedorId": -1,
-      "id": 5
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/1986605999/display_1500/stock-photo-happy-indian-mother-having-fun-with-her-daughter-outdoor-family-and-love-concept-focus-on-mum-1986605999.jpg"
+      ],
+      "id": 8
+    },
+    {
+      "nome": "Natação",
+      "descricao": "Natação para todas as idades",
+      "preco": 100,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/2477641905/display_1500/stock-photo-senior-couple-together-in-swimming-pool-2477641905.jpg",
+        "https://www.shutterstock.com/shutterstock/photos/2470882107/display_1500/stock-photo-child-in-swimming-pool-floating-on-toy-ring-kids-swim-colorful-rainbow-float-for-young-kids-2470882107.jpg"
+      ],
+      "id": 9
+    },
+    {
+      "nome": "teste x",
+      "descricao": "teste x",
+      "preco": 1,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/2479451501/display_1500/stock-photo-synchronized-swimmers-team-performing-artistic-swimming-in-swimming-pool-2479451501.jpg"
+      ],
+      "id": 10
     }
   ],
   "fornecedores": [

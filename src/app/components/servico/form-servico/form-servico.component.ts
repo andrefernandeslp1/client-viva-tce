@@ -1,14 +1,13 @@
-import { UsuarioService } from './../../usuario/service/usuario.service';
+
 import { Component, inject, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
-import { FornecedorService } from '../../fornecedor/service/fornecedor.service';
-import { Fornecedor } from '../../../model/fornecedor';
 import { ServicoService } from '../service/servico.service';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators, FormArray  } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../../../service/app.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-form-servico',
@@ -17,7 +16,8 @@ import { AppService } from '../../../service/app.service';
     HeaderComponent,
     MenuComponent,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   templateUrl: './form-servico.component.html',
   styleUrl: './form-servico.component.css'
@@ -29,14 +29,11 @@ export class FormServicoComponent {
   formBuilder = inject(FormBuilder);
   router = inject(Router);
   servicoService = inject(ServicoService);
-  fornecedorService = inject(FornecedorService);
   appService = inject(AppService);
 
   userLogged!: WritableSignal<any>;
 
   serviceId!: any;
-  roles!: string[];
-  indexImgArray = 0;
 
   constructor(private route: ActivatedRoute) {
     this.userLogged = this.appService.userLogged;
@@ -44,8 +41,8 @@ export class FormServicoComponent {
       nome: [null],
       descricao: [null],
       preco: [null],
-      imagens: this.formBuilder.array([]),
-      fornecedorId: [this.userLogged().fornecedorId],
+      imagens: this.formBuilder.array(['']),
+      fornecedorId: [this.userLogged().fornecedorId]
     });
   }
 
@@ -65,14 +62,21 @@ export class FormServicoComponent {
     });
   }
 
-  // form array de imagens
-  get imagensArray() {
-    return this.form.get('imagens') as FormArray;
+  imagemURL = '';
+  imagemArray: string[] = [];
+
+  addImagem() {
+    this.imagemArray.push(this.imagemURL);
+    this.atualizarImagens(this.imagemArray);
+    this.imagemURL = '';
+    console.log(this.form.value);
   }
-  addImage() {
-    this.imagensArray.push(this.formBuilder.control('', Validators.required));
+  atualizarImagens(novasImagens: string[]) {
+    const imagensArray = this.formBuilder.array(novasImagens.map(imagem => this.formBuilder.control(imagem)));
+    this.form.setControl('imagens', imagensArray);
   }
-  removeImage(index: number) {
-    this.imagensArray.removeAt(index);
+  removerURL(index: number) {
+    this.imagemArray.splice(index, 1);
+    this.atualizarImagens(this.imagemArray);
   }
 }
