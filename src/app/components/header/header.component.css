@@ -7,6 +7,10 @@ header {
   border-bottom: var(--border-size) solid var(--secondary);
 }
 
+app-menu {
+  flex: 1;
+}
+
 header *:not(i) {
   margin: 10px;
 }
