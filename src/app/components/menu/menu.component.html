@@ -1,6 +1,6 @@
 
 <ul class="d-flex flex-row">
-   <li routerLink="/viva-tce/servicos">SERVIÇOS</li>
-   <li routerLink="/viva-tce/fornecedores">FORNECEDORES</li>
-   <li routerLink="/viva-tce/usuarios">USUÁRIOS</li> 
+   @for (item of menu; track $index) {
+      <li [class]="isSelected(item.path)? 'selected' : ''" [routerLink]="item.path">{{item.nome}}</li>
+   }
 </ul>

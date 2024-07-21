@@ -1,7 +1,5 @@
-<div class="container">
-
-  <h5 class="text-success mt-2">Lista de Serviços</h5>
-  <div class="card-deck">
+<app-titulo titulo="LISTAGEM DE SERVIÇOS" [showBtn]="podeCadastrar()" (btnFn)="novoServico()"></app-titulo>
+<main class="card-deck mt-3 p-4">
     @for(servico of servicos(); track servico.id; let idx = $index) {
       <div class="card" style="width: 18rem;">
         <img [src]="servico.imagens[0]" class="card-img-top" alt="...">
@@ -14,6 +12,4 @@
     }@empty {
       <p>Nenhum serviço cadastrado</p>
     }
-  </div>
-
-</div>
+</main>

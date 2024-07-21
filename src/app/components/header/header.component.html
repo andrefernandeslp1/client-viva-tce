@@ -2,7 +2,10 @@
 <header class="d-flex flex-row shadow">
   <img [src]="tceLogo" routerLink="/servicos" alt="Logo do TCE-RN">
   <hr/>
-  <h1>VIVA TCE</h1>
+  <div class="d-flex flex-column">
+    <h1>VIVA TCE</h1>
+    <h3>PORTAL DE SERVIÇOS</h3>
+  </div>
   <app-menu></app-menu>
   <div class="d-flex float-right user nav-item dropdown">
     <p>{{usuario().nome}}</p>
