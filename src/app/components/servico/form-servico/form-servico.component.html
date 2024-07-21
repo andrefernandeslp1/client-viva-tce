@@ -1,5 +1,40 @@
 <app-header></app-header>
 <app-menu></app-menu>
 <div class="container">
-  <p>form-servico works!</p>
+  <h4 class="mt-2">Form Servico</h4>
+  <form class="form-group" [formGroup]="form" >
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" formControlName="nome">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descrição</label>
+      <input type="text" class="form-control" formControlName="descricao">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Preço</label>
+      <input type="number" class="form-control" formControlName="preco">
+    </div>
+
+  </form>
+
+    <label class="form-label mt-2">URL da Imagem</label>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" [(ngModel)]="imagemURL" name="imagemURL" placeholder="URL da imagem" (keyup.enter)="addImagem()">
+      <button class="btn btn-outline-success" (click)="addImagem()">Adicionar Imagem</button>
+    </div>
+
+    @for(imagemURL of imagemArray; track imagemURL; let idx = $index) {
+      <p>- {{imagemURL}}<button type="button" class="btn btn-danger btn-sm" style="float:right" (click)="removerURL(idx)">Remover</button></p>
+    }
+
+    @if(serviceId == null) {
+      <button class="btn btn-success" (click)="onAdd()">Cadastrar</button>
+
+    }@else {
+      <button class="btn btn-success" (click)="onEdit(serviceId, form.value)">Editar</button>
+    }
+
+
+
 </div>

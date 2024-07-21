@@ -15,7 +15,12 @@ export class AppComponent {
   title = 'client';
   constructor() {
     // let token = ""
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.0y88aC-joyJ5LgkInDmS2yXV1Vo9ET6DYPe0lNlMNMQ"
+
+    // ADMIN
+    // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.0y88aC-joyJ5LgkInDmS2yXV1Vo9ET6DYPe0lNlMNMQ"
+
+    // VENDEDOR
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gVmVuZGVkb3IiLCJlbWFpbCI6InZlbmRlZG9yQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kZWRvciIsInN1YiI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE1MTYyMzkwMjJ9.AOHuEZFEith85h8aFDjsnh91aksXI9oBME2kChnU_qU"
 
     try {
       let decodedToken = jwtDecode<JwtPayload & {id: number; nome: string; email: string; role: string}>(token);

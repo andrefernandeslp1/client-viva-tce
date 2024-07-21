@@ -1,0 +1,16 @@
+/* Mudar a cor de fundo quando o switch está ativado */
+.form-check-input:checked {
+  background-color: #198754; /* Verde Bootstrap */
+  border-color: #198754;
+}
+
+/* Estilizar o thumb do switch */
+.form-check-input:checked::before {
+  background-color: #fff; /* Cor do thumb */
+}
+
+/* Estilizar o switch quando ele ganha foco */
+.form-check-input:focus {
+  border-color: #198754; /* Cor da borda ao focar */
+  box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25); /* Sombra com transparência */
+}

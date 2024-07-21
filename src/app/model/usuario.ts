@@ -5,4 +5,5 @@ export interface Usuario {
   email: string;
   telefone: string;
   role: string;
+  fornecedorId?: number;
 }

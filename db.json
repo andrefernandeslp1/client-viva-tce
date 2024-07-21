@@ -4,19 +4,76 @@
       "id": 0,
       "nome": "Corte de Cabelo",
       "descricao": "Corte de cabelo masculino",
-      "preco": 30.00,
+      "preco": 30,
       "imagens": [
         "https://www.guiadasemana.com.br/contentFiles/image/opt_w768h480/2017/02/FEA/49393_shutterstock-barbearia.jpg"
       ],
       "fornecedorId": 0
     },
     {
-      "id": 0,
+      "id": 1,
       "nome": "Pilates",
       "descricao": "'Pilates para iniciantes'",
-      "preco": 100.00,
-      "imagens": ["https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"],
+      "preco": 100,
+      "imagens": [
+        "https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"
+      ],
       "fornecerId": 0
+    },
+    {
+      "nome": "teste2",
+      "descricao": "teste2",
+      "preco": 100,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/1922200124/display_1500/stock-photo-medical-science-laboratory-portrait-of-beautiful-black-scientist-looking-under-microscope-does-1922200124.jpg"
+      ],
+      "id": 7
+    },
+    {
+      "nome": "teste3",
+      "descricao": "teste3",
+      "preco": 100,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/1986605999/display_1500/stock-photo-happy-indian-mother-having-fun-with-her-daughter-outdoor-family-and-love-concept-focus-on-mum-1986605999.jpg"
+      ],
+      "id": 8
+    },
+    {
+      "nome": "Natação",
+      "descricao": "Natação para todas as idades",
+      "preco": 100,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/2477641905/display_1500/stock-photo-senior-couple-together-in-swimming-pool-2477641905.jpg",
+        "https://www.shutterstock.com/shutterstock/photos/2470882107/display_1500/stock-photo-child-in-swimming-pool-floating-on-toy-ring-kids-swim-colorful-rainbow-float-for-young-kids-2470882107.jpg"
+      ],
+      "id": 9
+    },
+    {
+      "nome": "teste x",
+      "descricao": "teste x",
+      "preco": 1,
+      "fornecedorId": -1,
+      "imagens": [
+        "https://www.shutterstock.com/shutterstock/photos/2479451501/display_1500/stock-photo-synchronized-swimmers-team-performing-artistic-swimming-in-swimming-pool-2479451501.jpg"
+      ],
+      "id": 10
+    }
+  ],
+  "fornecedores": [
+    {
+      "id": 0,
+      "nome": "Barbearia do Zé",
+      "contato": "(11)99999-9999",
+      "logo": "https://www.shutterstock.com/shutterstock/photos/2467077677/display_1500/stock-vector-vintage-barber-shop-logo-haircut-salon-retro-design-old-hairdresser-badge-with-barber-pole-2467077677.jpg"
+    },
+    {
+      "id": 1,
+      "nome": "Pilates da Maria",
+      "contato": "(11)99999-9999",
+      "logo": "https://www.shutterstock.com/shutterstock/photos/2275403891/display_1500/stock-vector-yoga-asana-one-line-drawing-women-body-shape-fitness-workout-concept-continuous-art-linear-2275403891.jpg"
     }
   ]
 }
