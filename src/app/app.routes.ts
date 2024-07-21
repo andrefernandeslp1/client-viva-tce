@@ -42,8 +42,11 @@ export const routes: Routes = [
         redirectTo: '/viva-tce/servicos'
       },
       { path: 'servicos',
-        loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
         children: [
+          {
+            path: '',
+            loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
+          },
           {
             path: 'new',
             component: FormServicoComponent,
