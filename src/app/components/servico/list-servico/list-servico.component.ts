@@ -3,12 +3,14 @@ import { Component, inject, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { Servico } from '../../../model/servico';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { TituloComponent } from "../../../titulo/titulo.component";
+import { AppService } from '../../../service/app.service';
 
 @Component({
   selector: 'app-list-servico',
   standalone: true,
-  imports: [HeaderComponent, MenuComponent, RouterModule],
+  imports: [HeaderComponent, MenuComponent, RouterModule, TituloComponent],
   templateUrl: './list-servico.component.html',
   styleUrl: './list-servico.component.css'
 })
@@ -18,7 +20,7 @@ export class ListServicoComponent {
 
   servicos!: WritableSignal<Servico[]>;
 
-  constructor() {
+  constructor(private router: Router, private appService: AppService) {
     this.servicos = this.ServicoService.servicos;
   }
 
@@ -37,6 +39,12 @@ export class ListServicoComponent {
     this.ServicoService.delete(id);
   }
 
+  novoServico() {
+    this.router.navigate(['viva-tce', 'servicos', 'new'])
+  }
 
+  podeCadastrar(): boolean {
+    return this.appService.userLogged().role === 'vendedor'
+  }
 
 }

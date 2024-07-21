@@ -1,0 +1,13 @@
+h1 {
+    color: var(--primary);
+    font-size: 35px;
+    flex: 1;
+}
+
+div{
+    width: 100vw;
+}
+
+button {
+    justify-content: flex-end;
+}

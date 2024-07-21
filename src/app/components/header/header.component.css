@@ -5,18 +5,25 @@ header {
   color: var(--header-color);
   align-items: center;
   border-bottom: var(--border-size) solid var(--secondary);
+  user-select: none;
 }
 
 app-menu {
   flex: 1;
 }
 
-header *:not(i) {
+header *:not(i, h1, h3) {
   margin: 10px;
 }
 
 h1 {
   font-size: 50px;
+}
+
+h3{
+  font-size: 15px;
+  text-align: center;
+  color: var(--secondary);
 }
 
 hr {
@@ -66,5 +73,10 @@ p {
 }
 .dropdown-menu a {
   color: var(--on-primary-container);
+  user-select: none;
   width: 90%;
+}
+
+.dropdown-menu a:active {
+  background-color: var(--primary-container);
 }
