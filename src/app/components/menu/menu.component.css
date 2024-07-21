@@ -1,12 +1,23 @@
-.nav-item:hover .dropdown-menu {
-  display: block;
+ul{
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  margin-bottom: 0;
 }
-.dropdown-menu {
-  display: none;
-  position: absolute;
-  background-color: #ffc107;
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+
+li {
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 20px;
+  padding: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: all 0.5s ease-in-out;
 }
-.dropdown-menu a {
-  color: #343a40;
+
+
+.selected, li:hover {
+  border-bottom: 1px solid var(--primary);
 }
