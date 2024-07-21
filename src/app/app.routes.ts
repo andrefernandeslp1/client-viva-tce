@@ -65,14 +65,17 @@ export const routes: Routes = [
           },
         ]
       },
-    
+
         // USUÁRIO
         {
           path: 'usuarios',
-          loadComponent: () => import('./components/usuario/list-usuario/list-usuario.component').then(m => m.ListUsuarioComponent),
-          canActivate: [roleGuard],
-          data: {expectedRoles: ['admin']},
           children: [
+            {
+              path: '',
+              loadComponent: () => import('./components/usuario/list-usuario/list-usuario.component').then(m => m.ListUsuarioComponent),
+              canActivate: [roleGuard],
+              data: {expectedRoles: ['admin']},
+            },
             {
               path: 'new',
               component: FormUsuarioComponent,
@@ -93,13 +96,16 @@ export const routes: Routes = [
             },
           ]
         },
-    
+
         // FORNECEDOR
         {
           path: 'fornecedores',
-          loadComponent: () => import('./components/fornecedor/list-fornecedor/list-fornecedor.component').then(m => m.ListFornecedorComponent),
-          canActivate: [authGuard],
           children: [
+            {
+              path: '',
+              loadComponent: () => import('./components/fornecedor/list-fornecedor/list-fornecedor.component').then(m => m.ListFornecedorComponent),
+              canActivate: [authGuard],
+            },
             {
               path: 'new',
               component: FormFornecedorComponent,
