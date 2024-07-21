@@ -1,14 +1,40 @@
 {
-  "servico": [
+  "usuarios": [
     {
       "id": 0,
-      "nome": "Corte de Cabelo",
-      "descricao": "Corte de cabelo masculino",
-      "preco": 30,
-      "imagens": [
-        "https://www.guiadasemana.com.br/contentFiles/image/opt_w768h480/2017/02/FEA/49393_shutterstock-barbearia.jpg"
-      ],
+      "nome": "João Admin",
+      "email": "joao@gmail.com",
+      "telefone": "(11)99999-9999",
+      "role": "admin"
+    },
+    {
+      "id": 1,
+      "nome": "Maria Vendedora",
+      "email": "maria@gmail.com",
+      "telefone": "(11)99999-9999",
+      "role": "vendedor",
       "fornecedorId": 0
+    },
+    {
+      "nome": "test user",
+      "email": "teste@gmail.com",
+      "role": "vendedor",
+      "fornecedorId": "0",
+      "senha": "1234",
+      "telefone": "99999999",
+      "id": 2
+    }
+  ],
+  "servicos": [
+    {
+      "nome": null,
+      "descricao": null,
+      "preco": null,
+      "fornecedorId": 0,
+      "imagens": [
+        "https://www.shutterstock.com/image-photo/attractive-happy-man-smiling-while-600nw-2267242719.jpg"
+      ],
+      "id": 0
     },
     {
       "id": 1,

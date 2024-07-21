@@ -11,13 +11,7 @@ export class AppService {
 
   jwtTokenService = inject(JWTTokenService);
 
-  userLogged = signal<any>({
-    id: 0,
-    nome: 'John Doe',
-    email: 'john@gmail.com',
-    role: 'admin',
-    fornecedorId: -1
-  });
+  userLogged = signal<any>({});
 
   public API_URL = 'http://localhost:3000';
 
@@ -28,8 +22,20 @@ export class AppService {
       this.userLogged().nome = this.jwtTokenService.getUser();
       this.userLogged().email = this.jwtTokenService.getEmail();
       this.userLogged().role = this.jwtTokenService.getRole();
+      if(this.userLogged().role === 'vendedor') {
+        this.userLogged().fornecedorId = localStorage.getItem('fornecedorId');
+      }
     }
+    else {
+      this.userLogged.set({
+        id: 0,
+        nome: 'John Doe',
+        email: '',
+        role: 'admin',
+        // fornecedorId: 0
+    });
    }
+  }
 
   signup(usuario: Usuario): Observable<HttpResponse<any>>{
     return this.httpClient.post<any>(this.API_URL + "/signup", usuario, { observe: 'response' }).pipe(

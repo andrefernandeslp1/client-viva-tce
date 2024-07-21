@@ -14,7 +14,7 @@ export class ServicoService extends BaseService<Servico> {
   servicos = signal<Servico[]>([{} as Servico]);
 
   constructor(httpClient: HttpClient, appService: AppService) {
-    super(httpClient, `${appService.API_URL}/servico`);
+    super(httpClient, `${appService.API_URL}/servicos`);
   }
 
 

@@ -52,13 +52,13 @@ export class FormServicoComponent {
 
   onAdd() {
     this.servicoService.create(this.form.value).subscribe(() => {
-      this.router.navigate(['/servico']);
+      this.router.navigate(['/viva-tce']);
     });
   }
 
   onEdit(id: any, servico : any) {
     this.servicoService.update(id, servico).subscribe(() => {
-      this.router.navigate(['/servico']);
+      this.router.navigate(['/viva-tce']);
     });
   }
 

@@ -12,7 +12,7 @@ export class FornecedorService extends BaseService<Fornecedor> {
   fornecedores = signal<Fornecedor[]>([{} as Fornecedor]);
 
   constructor(httpClient: HttpClient, appService: AppService) {
-    super(httpClient, `${appService.API_URL}/servico`);
+    super(httpClient, `${appService.API_URL}/fornecedores`);
   }
 
 }

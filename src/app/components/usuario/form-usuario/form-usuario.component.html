@@ -1,25 +1,51 @@
-<app-header></app-header>
-<app-menu></app-menu>
+
 <div class="container">
-  <p>form-usuario works!</p>
 
+  <h4 class="mt-2">Form Usuário</h4>
+  <form class="form-group" [formGroup]="form" >
+    <div class="mb-3">
+      <label class="form-label">Nome</label>
+      <input type="text" class="form-control" formControlName="nome">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Senha</label>
+      <input type="text" class="form-control" formControlName="senha">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Email</label>
+      <input type="text" class="form-control" formControlName="email">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Telefone</label>
+      <input type="text" class="form-control" formControlName="telefone">
+    </div>
 
+    <label class="form-label">Papel</label>
+    <select class="form-select" formControlName="role">
+      @for(role of roles; track role; let idx = $index) {
+        <option value="{{role}}">{{role}}</option>
+      }
+    </select>
 
-  <!-- <label class="form-label">Papel</label>
-  <select class="form-select mb-3">
-    <option selected disabled></option>
-    @for(role of roles; track role; let idx = $index) {
-      <option value="{{role}}">{{role}}</option>
+    @if(this.form.get('role')?.value == 'vendedor') {
+      <label class="form-label mt-2">ID do Fornecedor</label>
+      <select class="form-select" formControlName="fornecedorId">
+        @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
+          <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>
+        }
+      </select>
     }
-  </select>
 
-  <label class="form-label">Fornecedor</label>
+    @if(usuarioId == null) {
+      <button class="btn btn-success mt-2" (click)="onAdd()">Cadastrar</button>
 
-  <select class="form-select mb-3">
-    <option selected disabled></option>
-    @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
-      <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>
+    }@else {
+      <button class="btn btn-success mt-2" (click)="onEdit(usuarioId, form.value)">Editar</button>
     }
-  </select> -->
+
+  </form>
+
+
+
 
 </div>
