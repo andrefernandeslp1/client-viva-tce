@@ -5,3 +5,11 @@
     gap: 1rem;
 }
 
+.card-deck *:not(a) {
+    color: var(--primary);
+}
+
+img {
+    height: 200px;
+}
+

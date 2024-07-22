@@ -1,22 +1,20 @@
 <!-- <p>list-user works!</p> -->
 
-  <app-titulo titulo="LISTAGEM DE USUÁRIOS" (click)="onCadastrar()" [showBtn]="true"></app-titulo>
-  <table class="table">
+  <app-titulo titulo="LISTAGEM DE USUÁRIOS" (btnFn)="onCadastrar()" [showBtn]="true"></app-titulo>
+  <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Role</th>
+        <th scope="col">Nome</th>
+        <th scope="col">E-mail</th>
+        <th scope="col">Papel</th>
         <th scope="col">Fornecedor ID</th>
-        <th scope="col">Action</th>
+        <th scope="col">Ações</th>
       </tr>
     </thead>
     <tbody>
       @for(usuario of usuarios(); track usuario.id; let idx  = $index) {
         <tr>
-          <th scope="row">{{ usuario.id }}</th>
-          <td>{{ usuario.nome }}</td>
+          <td scope="row">{{ usuario.nome }}</td>
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.role }}</td>
           <td>{{ usuario.fornecedorId }}</td>

@@ -1,0 +1,60 @@
+h1 {
+    font-weight: bolder;
+    font-size: 75px;
+  }
+  
+  hr {
+    border-left: 3px solid;
+    opacity: 1;
+    border-color: var(--primary);
+    border-radius: 25px;
+  }
+  
+  .title {
+    justify-content: center;
+    align-items: center;
+    margin-left: 25px;
+    align-self: center;
+  }
+  
+  h3 {
+    color: var(--secondary);
+    font-size: 25px;
+  }
+  
+  img {
+    height: 15vh;
+  }
+
+  .logo {
+    display: flex;
+    flex-direction: row;
+  }
+
+  * {
+    color: var(--primary);
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100vh;
+  }
+
+  .error {
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .error h2 {
+    font-size: 50px;
+  }
+
+  .error i {
+    font-size: 100px;
+    margin-right: 10px;
+  }

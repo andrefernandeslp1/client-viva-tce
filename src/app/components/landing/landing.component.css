@@ -92,8 +92,6 @@ header {
 h1 {
   font-weight: bolder;
   font-size: 75px;
-  align-self: center;
-  margin-left: 25px;
 }
 
 hr {
@@ -101,6 +99,18 @@ hr {
   opacity: 1;
   border-color: var(--primary);
   border-radius: 25px;
+}
+
+.title {
+  justify-content: center;
+  align-items: center;
+  margin-left: 25px;
+  align-self: center;
+}
+
+h3 {
+  color: var(--secondary);
+  font-size: 25px;
 }
 
 form {
@@ -121,5 +131,9 @@ img {
 
   h1 {
     font-size: 25px;
+  }
+
+  h3 {
+    font-size: 10px;
   }
 }

@@ -33,7 +33,7 @@ export class MenuComponent {
   constructor(private location: Location) {}
 
   isSelected(path: string) {
-    return this.location.isCurrentPathEqualTo(path)
+    return this.location.path().toString().startsWith(path)
   }
 
 }

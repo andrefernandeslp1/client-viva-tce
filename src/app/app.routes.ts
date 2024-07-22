@@ -14,6 +14,7 @@ import { PerfilFornecedorComponent } from './components/fornecedor/perfil-fornec
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 export const routes: Routes = [
 
@@ -30,7 +31,6 @@ export const routes: Routes = [
   },
 
   { path: 'unauthorized', component: UnauthorizedComponent },
-
   {
     path: 'viva-tce',
     component: HomeComponent,
@@ -125,6 +125,9 @@ export const routes: Routes = [
           ]
         },
     ]
-  }
+  },
+
+  
+  { path: '**', component: PaginaNaoEncontradaComponent },
 
 ];

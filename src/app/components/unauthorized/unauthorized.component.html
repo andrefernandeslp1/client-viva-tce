@@ -1,14 +1,21 @@
-<div class="corpo bg-dark text-white py-5">
-  <div class="container py-5">
-       <div class="row">
-            <div class="col-md-2 text-center">
-                 <p><i class="fa fa-exclamation-triangle fa-5x"></i><br/>Status Code: 403</p>
-            </div>
-            <div class="col-md-10">
-                 <h3>OPPSSS!!!! Sorry...</h3>
-                 <p>Sorry, your access is refused due to security reasons of our server and also our sensitive data.<br/>Please go back to the previous page to continue browsing.</p>
-                 <a class="btn btn-danger" href="javascript:history.back()">Go Back</a>
-            </div>
-       </div>
-  </div>
-</div>
+<main>
+
+     <div class="logo">
+         <img [src]="logoTce" alt="Logo do Tribunal de Contas do Estado do Rio Grande do Norte">
+         <hr>
+         <div class="d-flex flex-column justify-content-center align-items-center title">
+         <h1>VIVA TCE</h1>
+         <h3>PORTAL DE SERVIÇOS</h3>
+         </div>
+     </div>
+ 
+     <div class="error p-4">
+         <i class="fa-solid fa-exclamation-triangle"></i>
+         <div class="d-flex flex-column align-items-center">
+             <h2>Acesso negado</h2>
+             <p>Você não tem autorização para acessar essa página</p>
+             <button class="btn btn-success" (click)="voltar()">Voltar</button>
+         </div>
+     </div>
+
+ </main>
