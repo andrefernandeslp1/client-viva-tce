@@ -110,5 +110,28 @@
       "contato": "(11)99999-9999",
       "logo": "https://www.shutterstock.com/shutterstock/photos/2275403891/display_1500/stock-vector-yoga-asana-one-line-drawing-women-body-shape-fitness-workout-concept-continuous-art-linear-2275403891.jpg"
     }
+  ],
+  "compras": [
+    {
+      "servicoId": "1",
+      "usuarioId": 0,
+      "data": "2024-07-22T02:33:20.156Z",
+      "assinatura": false,
+      "id": 1
+    },
+    {
+      "servicoId": "1",
+      "usuarioId": 0,
+      "data": "2024-07-22T02:34:38.799Z",
+      "assinatura": false,
+      "id": 2
+    },
+    {
+      "servicoId": "0",
+      "usuarioId": 0,
+      "data": "2024-07-22T02:36:56.100Z",
+      "assinatura": false,
+      "id": 3
+    }
   ]
 }
