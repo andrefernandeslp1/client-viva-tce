@@ -9,7 +9,7 @@ import {LocalStorageService} from "./local-storage.service";
 export class JWTTokenService {
 
   jwtToken: string | null | undefined;
-  decodedToken: JwtPayload & {id: number; nome: string; email: string; role: string} | undefined;
+  decodedToken: JwtPayload & {id: number; nome: string; email: string; role: string; fornecedorId: number} | undefined;
 
   constructor(private authStorageService: LocalStorageService)
   {
@@ -34,5 +34,9 @@ export class JWTTokenService {
 
   getUserId() {
     return this.decodedToken ? this.decodedToken.id : null;
+  }
+
+  getUserFornecedor() {
+    return this.decodedToken ? this.decodedToken.fornecedorId : null;
   }
 }

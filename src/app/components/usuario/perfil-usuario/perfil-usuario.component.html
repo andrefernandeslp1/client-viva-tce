@@ -1,5 +1,5 @@
-<!-- <p>detail-user works!</p> -->
-<div class="container">
+
+<!-- <div class="container">
 
 
   <h3>User Detail</h3>
@@ -21,7 +21,33 @@
   </div>
 
   <br>
-  <p>LISTA DE SERVIÇOS CONTRATADOS POR ESTE USUÁRIO</p>
+  <app-list-compra [compras]="compras"></app-list-compra>
 
+  </div> -->
+
+  <div class="container">
+    <h3 class="mb-4">Perfil de Usuário</h3>
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center">
+        <img [src]="userImage" alt="User Image" class="img-fluid rounded-circle mb-3">
+      </div>
+      <div class="col-md-8">
+        <div class="d-flex align-items-center mb-3">
+          <h4 class="mb-0">
+            {{ usuario().nome }}
+          </h4>
+          <i class="fa-solid fa-pen p-1" (click)="onEdit()" style="cursor: pointer;"></i>
+        </div>
+        <ul class="list-unstyled">
+          <li><strong>ID:</strong> {{ usuario().id }}</li>
+          <li><strong>Email:</strong> {{ usuario().email }}</li>
+          <li><strong>Role:</strong> {{ usuario().role }}</li>
+          <li><strong>Telefone:</strong> {{ usuario().telefone }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <app-list-compra [compras]="compras"></app-list-compra>
+    </div>
   </div>
-
