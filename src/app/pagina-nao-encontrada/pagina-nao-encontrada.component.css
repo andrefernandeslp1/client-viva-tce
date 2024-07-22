@@ -33,6 +33,7 @@ h1 {
 
   * {
     color: var(--primary);
+    text-transform: uppercase;
   }
 
   main {
@@ -52,6 +53,10 @@ h1 {
 
   .error h2 {
     font-size: 50px;
+  }
+
+  .error p {
+    color: var(--secondary);
   }
 
   .error i {
