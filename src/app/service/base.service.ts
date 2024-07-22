@@ -30,4 +30,8 @@ export abstract class BaseService<T> {
   delete(id: number): Observable<any> {
     return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
+
+  listById(id: number): Observable<T[]> {
+    return this.httpClient.get<T[]>(`${this.apiUrl}?usuarioId=${id}`);
+  }
 }

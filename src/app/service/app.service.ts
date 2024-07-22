@@ -29,7 +29,7 @@ export class AppService {
     else {
       this.userLogged.set({
         id: 0,
-        nome: 'John Doe',
+        nome: 'John',
         email: '',
         role: 'admin',
         // fornecedorId: 0

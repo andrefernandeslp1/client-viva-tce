@@ -31,13 +31,14 @@ export class DetalhesServicoComponent {
   compra = {} as ServicoUsuario;
   servico = signal<Servico>({} as Servico);
 
-  usuarioId!: any;
-  servicoId!: any;
+  usuarioId!: number;
+  servicoId!: number;
   assinatura = false;
 
   constructor() {
     this.usuarioId = this.appService.userLogged().id;
-    this.servicoId = this.route.snapshot.paramMap.get('id');
+    const servicoIdString = this.route.snapshot.paramMap.get('id');
+    this.servicoId = servicoIdString ? parseInt(servicoIdString) : 0;
   }
 
   ngOnInit() {

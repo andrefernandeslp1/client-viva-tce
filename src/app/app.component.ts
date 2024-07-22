@@ -17,20 +17,20 @@ export class AppComponent {
     // let token = ""
 
     // ADMIN
-    // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gRG9lIiwiZW1haWwiOiJqb2huQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiJ9.0y88aC-joyJ5LgkInDmS2yXV1Vo9ET6DYPe0lNlMNMQ"
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gQWRtaW5pc3RyYWRvciIsImVtYWlsIjoidmVuZGVkb3JAZ21haWwuY29tIiwicm9sZSI6ImFkbWluIiwic3ViIjoiMTIzNDU2Nzg5MCIsImlhdCI6MTUxNjIzOTAyMn0.1vCVraALC9hbRi-E5QCDlRp-FHZ8pKPtTVuHGdDpDnA"
 
     // VENDEDOR
-    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gVmVuZGVkb3IiLCJlbWFpbCI6InZlbmRlZG9yQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kZWRvciIsInN1YiI6IjEyMzQ1Njc4OTAiLCJpYXQiOjE1MTYyMzkwMjJ9.AOHuEZFEith85h8aFDjsnh91aksXI9oBME2kChnU_qU"
+    // let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MCwibm9tZSI6IkpvaG4gVmVuZGVkb3IiLCJlbWFpbCI6InZlbmRlZG9yQGdtYWlsLmNvbSIsInJvbGUiOiJ2ZW5kZWRvciIsImZvcm5lY2Vkb3JJZCI6IjAiLCJzdWIiOiIxMjM0NTY3ODkwIiwiaWF0IjoxNTE2MjM5MDIyfQ.4O6SbWYLSzptXLcwSKnyajPvU34CYY4zQMN-uB-SRcQ"
 
     try {
       let decodedToken = jwtDecode<JwtPayload & {id: number; nome: string; email: string; role: string}>(token);
-      console.log(decodedToken)
-      console.log(decodedToken.id)
-      console.log(decodedToken.nome)
-      console.log(decodedToken.email)
-      console.log(decodedToken.role)
+      console.log(decodedToken);
+      console.log(decodedToken.id);
+      console.log(decodedToken.nome);
+      console.log(decodedToken.email);
+      console.log(decodedToken.role);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
 
     //document.cookie = "jwt-token="+ token;
