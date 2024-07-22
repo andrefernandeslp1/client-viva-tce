@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
@@ -8,5 +9,12 @@ import { Component } from '@angular/core';
   styleUrl: './unauthorized.component.css'
 })
 export class UnauthorizedComponent {
+  logoTce = './assets/tce.jpg'
 
+
+  constructor(private location: Location) {}
+
+  voltar() {
+    this.location.back();
+  }
 }
