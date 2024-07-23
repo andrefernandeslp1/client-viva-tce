@@ -15,8 +15,8 @@
           </div>
       </div>
       <div class="coluna-2">
-          <h4 class="mt-2">Nome: {{fornecedor.nome}}</h4>
-          <h5 class="mt-2">Contato: {{fornecedor.contato}}</h5>
+          <h3 class="mt-2 text-success">{{fornecedor.nome}}</h3>
+          <h6 class="mt-2">Contato: {{fornecedor.contato}}</h6>
           @if(userLogged().role == 'admin') {
             <button type="button" class="btn btn-success mt-3" routerLink="edit">Editar</button>
           }

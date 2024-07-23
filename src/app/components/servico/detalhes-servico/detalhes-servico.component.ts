@@ -5,7 +5,7 @@ import { MenuComponent } from "../../menu/menu.component";
 import { ServicoUsuario } from '../../../model/servico-usuario';
 import { Servico } from '../../../model/servico';
 import { AppService } from '../../../service/app.service';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
 import { ServicoService } from '../service/servico.service';
 import { FormsModule } from '@angular/forms';
 
@@ -15,7 +15,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     HeaderComponent,
     MenuComponent,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   templateUrl: './detalhes-servico.component.html',
   styleUrl: './detalhes-servico.component.css'
@@ -30,6 +31,7 @@ export class DetalhesServicoComponent {
 
   compra = {} as ServicoUsuario;
   servico = signal<Servico>({} as Servico);
+  userLogged!: WritableSignal<any>;
 
   usuarioId!: number;
   servicoId!: number;
@@ -39,6 +41,7 @@ export class DetalhesServicoComponent {
     this.usuarioId = this.appService.userLogged().id;
     const servicoIdString = this.route.snapshot.paramMap.get('id');
     this.servicoId = servicoIdString ? parseInt(servicoIdString) : 0;
+    this.userLogged = this.appService.userLogged;
   }
 
   ngOnInit() {
