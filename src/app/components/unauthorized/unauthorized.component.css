@@ -31,8 +31,12 @@ img {
   flex-direction: row;
 }
 
-*:not(button) {
+*:not(button, h3) {
   color: var(--primary);
+}
+
+* {
+  text-transform: uppercase;
 }
 
 main {
@@ -57,6 +61,10 @@ main {
 .error i {
   font-size: 100px;
   margin-right: 10px;
+}
+
+.error p {
+  color: var(--secondary);
 }
 
 button {
