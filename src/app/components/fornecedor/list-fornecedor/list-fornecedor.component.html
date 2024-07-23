@@ -1,1 +1,16 @@
-<app-titulo titulo="LISTAGEM DE FORNECEDOR" [showBtn]="true"></app-titulo>
+<app-titulo titulo="LISTAGEM DE FORNECEDORES" [showBtn]="true" routerLink="new" ></app-titulo>
+
+<main class="card-deck p-4">
+  @for(fornecedor of fornecedores(); track fornecedor.id; let idx = $index) {
+    <div class="card" style="width: 18rem;">
+      <img [src]="fornecedor.logo" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{fornecedor.nome}}</h5>
+        <p class="card-text">{{fornecedor.contato}}</p>
+        <a class="btn btn-success" routerLink="{{fornecedor.id}}">Detalhes</a>
+      </div>
+    </div>
+  }@empty {
+    <p>Nenhum serviço cadastrado</p>
+  }
+</main>

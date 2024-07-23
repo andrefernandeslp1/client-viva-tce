@@ -1,5 +1,5 @@
 <app-titulo titulo="LISTAGEM DE SERVIÇOS" [showBtn]="podeCadastrar()" (btnFn)="novoServico()"></app-titulo>
-<main class="card-deck mt-3 p-4">
+<main class="card-deck p-4">
     @for(servico of servicos(); track servico.id; let idx = $index) {
       <div class="card" style="width: 18rem;">
         <img [src]="servico.imagens[0]" class="card-img-top" alt="...">

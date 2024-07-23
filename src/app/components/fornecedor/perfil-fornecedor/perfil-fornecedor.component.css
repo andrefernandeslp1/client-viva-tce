@@ -1,0 +1,19 @@
+.container {
+  margin-top: 20px;
+}
+.corpo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.coluna-1, .coluna-2 {
+  flex: 1;
+  min-width: 300px;
+}
+.carousel-inner img {
+  height: 400px;
+  object-fit: cover;
+}
+.carousel-item img {
+  border-radius: 10px;
+}

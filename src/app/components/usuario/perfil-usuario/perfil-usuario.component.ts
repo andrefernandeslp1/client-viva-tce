@@ -6,6 +6,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CompraService } from '../../../service/compra.service';
 import { ListCompraComponent } from '../../compra/list-compra/list-compra.component';
 import { ServicoUsuario } from '../../../model/servico-usuario';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { AppService } from '../../../service/app.service';
 
 @Component({
   selector: 'app-perfil-usuario',
@@ -26,6 +29,9 @@ export class PerfilUsuarioComponent {
   usuario!: WritableSignal<any>;
   usuarioId: any;
   compras!: ServicoUsuario[];
+
+  httpClient = inject(HttpClient);
+  appService = inject(AppService);
 
   constructor() {
     this.usuario = this.usuarioService.usuario;
@@ -48,11 +54,14 @@ export class PerfilUsuarioComponent {
   }
 
   getCompras() {
-    this.compraService.listById(this.usuarioId).subscribe(compras => {
+    this.listComprasByUserId(this.usuarioId).subscribe(compras => {
       this.compras = compras;
       console.log(compras);
     });
   }
 
-
+  // FORMA DE RECUPERAR COMPRAS POR ID DO USUÁRIO NO ESTILO JSON-SERVER //
+  listComprasByUserId(id: any): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.appService.API_URL}/compras?usuarioId=${id}`);
+  }
 }

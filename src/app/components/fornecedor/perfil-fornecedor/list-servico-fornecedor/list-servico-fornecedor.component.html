@@ -1,0 +1,15 @@
+
+<main class="card-deck p-4">
+  @for(servico of servicos; track servico.id; let idx = $index) {
+    <div class="card" style="width: 18rem;">
+      <img [src]="servico.imagens[0]" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{servico.nome}}</h5>
+        <p class="card-text">{{servico.descricao}}</p>
+        <a class="btn btn-success" routerLink="/viva-tce/servicos/{{servico.id}}">Detalhes</a>
+      </div>
+    </div>
+  }@empty {
+    <p>Nenhum serviço cadastrado</p>
+  }
+</main>

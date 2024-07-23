@@ -1,5 +1,5 @@
 import { ServicoService } from './../service/servico.service';
-import { Component, inject, WritableSignal } from '@angular/core';
+import { Component, inject, Input, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { Servico } from '../../../model/servico';
