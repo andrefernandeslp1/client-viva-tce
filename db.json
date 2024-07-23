@@ -98,18 +98,18 @@
   ],
   "compras": [
     {
-      "servicoId": 0,
+      "servicoId": 8,
       "usuarioId": 0,
-      "data": "2024-07-22T19:18:42.500Z",
-      "assinatura": false,
-      "id": 1
+      "data": "2024-07-23T02:55:13.604Z",
+      "assinatura": true,
+      "id": 3
     },
     {
-      "servicoId": 1,
+      "servicoId": 9,
       "usuarioId": 0,
-      "data": "2024-07-22T19:18:47.476Z",
-      "assinatura": false,
-      "id": 2
+      "data": "2024-07-23T02:55:16.767Z",
+      "assinatura": true,
+      "id": 4
     }
   ]
 }
