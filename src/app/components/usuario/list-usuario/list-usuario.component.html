@@ -1,6 +1,5 @@
-<!-- <p>list-user works!</p> -->
-
-  <app-titulo titulo="LISTAGEM DE USUÁRIOS" (btnFn)="onCadastrar()" [showBtn]="true"></app-titulo>
+@if (usuarios$ | async; as usuarios) {
+  <app-titulo titulo="LISTAGEM DE USUÁRIOS" (btnFn)="onCadastrar()" [showBtn]="podeCadastrar()"></app-titulo>
   <table class="table table-striped text-center">
     <thead>
       <tr>
@@ -12,12 +11,17 @@
       </tr>
     </thead>
     <tbody>
-      @for(usuario of usuarios(); track usuario.id; let idx  = $index) {
+      @for(usuario of usuarios; track usuario.id; let idx  = $index) {
         <tr>
           <td scope="row">{{ usuario.nome }}</td>
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.role }}</td>
-          <td>{{ usuario.fornecedorId }}</td>
+          @if(usuario.fornecedorId) {
+            <td>{{usuario.fornecedorId}}</td>
+          }
+          @else {
+            <td>-</td>
+          }
           <td>
             <i class="fa-solid fa-eye p-1" (click)="verPerfil(usuario.id)"></i>
             <i class="fa-solid fa-pen p-1" routerLink="{{usuario.id}}/edit"></i>
@@ -32,4 +36,4 @@
       }
     </tbody>
   </table>
-
+}

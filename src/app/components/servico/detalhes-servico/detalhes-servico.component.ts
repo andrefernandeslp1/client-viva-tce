@@ -8,6 +8,8 @@ import { AppService } from '../../../service/app.service';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { ServicoService } from '../service/servico.service';
 import { FormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-detalhes-servico',
@@ -15,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     HeaderComponent,
     MenuComponent,
-    FormsModule
+    FormsModule,
+    AsyncPipe
   ],
   templateUrl: './detalhes-servico.component.html',
   styleUrl: './detalhes-servico.component.css'
@@ -30,6 +33,7 @@ export class DetalhesServicoComponent {
 
   compra = {} as ServicoUsuario;
   servico = signal<Servico>({} as Servico);
+  servico$: Observable<Servico> 
 
   usuarioId!: number;
   servicoId!: number;
@@ -39,6 +43,7 @@ export class DetalhesServicoComponent {
     this.usuarioId = this.appService.userLogged().id;
     const servicoIdString = this.route.snapshot.paramMap.get('id');
     this.servicoId = servicoIdString ? parseInt(servicoIdString) : 0;
+    this.servico$ = this.servicoService.getOne(this.servicoId)
   }
 
   ngOnInit() {
@@ -54,7 +59,7 @@ export class DetalhesServicoComponent {
   comprar() {
     this.compra.servicoId = this.servicoId,
     this.compra.usuarioId = this.usuarioId,
-    this.compra.data = new Date().toISOString(),
+    this.compra.data = new Date(),
     this.compra.assinatura = this.assinatura
 
     this.compraService.create(this.compra).subscribe(() => {

@@ -3,7 +3,7 @@ export interface Servico {
   nome: string;
   descricao: string;
   preco: number;
-  imagens: string[];
+  imagens: Array<String>;
   fornecerId: number;
 
 }

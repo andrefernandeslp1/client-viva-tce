@@ -1,4 +1,4 @@
-<app-titulo titulo="LISTAGEM DE FORNECEDORES" [showBtn]="true" routerLink="new" ></app-titulo>
+<app-titulo titulo="LISTAGEM DE FORNECEDORES" [showBtn]="podeCadastrar()" (btnFn)="cadastrar()"></app-titulo>
 
 <main class="card-deck p-4">
   @for(fornecedor of fornecedores(); track fornecedor.id; let idx = $index) {

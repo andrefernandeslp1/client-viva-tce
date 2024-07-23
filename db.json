@@ -38,7 +38,7 @@
     {
       "nome": "Corte de cabelo",
       "descricao": "Corte de cabelo para o TCE",
-      "preco": null,
+      "preco": 10,
       "fornecedorId": 0,
       "imagens": [
         "https://www.shutterstock.com/image-photo/attractive-happy-man-smiling-while-600nw-2267242719.jpg"
@@ -119,18 +119,11 @@
   ],
   "compras": [
     {
+      "id": "6c5b",
       "servicoId": 0,
       "usuarioId": 0,
-      "data": "2024-07-22T19:18:42.500Z",
-      "assinatura": false,
-      "id": 1
-    },
-    {
-      "servicoId": 1,
-      "usuarioId": 0,
-      "data": "2024-07-22T19:18:47.476Z",
-      "assinatura": false,
-      "id": 2
+      "data": "2024-07-23T00:47:32.495Z",
+      "assinatura": false
     }
   ]
 }

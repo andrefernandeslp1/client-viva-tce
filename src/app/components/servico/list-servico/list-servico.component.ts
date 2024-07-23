@@ -6,37 +6,41 @@ import { Servico } from '../../../model/servico';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { TituloComponent } from "../../../titulo/titulo.component";
 import { AppService } from '../../../service/app.service';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-servico',
   standalone: true,
-  imports: [HeaderComponent, MenuComponent, RouterModule, TituloComponent],
+  imports: [HeaderComponent, MenuComponent, RouterModule, TituloComponent, AsyncPipe],
   templateUrl: './list-servico.component.html',
   styleUrl: './list-servico.component.css'
 })
 export class ListServicoComponent {
 
-  ServicoService = inject(ServicoService);
+  service = inject(ServicoService);
 
   servicos!: WritableSignal<Servico[]>;
 
+  servicos$: Observable<Servico[]>
+
   constructor(private router: Router, private appService: AppService) {
-    this.servicos = this.ServicoService.servicos;
+    this.servicos$ = this.service.list();
   }
 
-  ngOnInit() {
-    this.listar();
-  }
+  /*ngOnInit() {
+    this.servicos$ = 
+  }*/
 
   listar() {
-    this.ServicoService.list().subscribe(servicos => {
+    this.service.list().subscribe(servicos => {
       this.servicos.set(servicos);
       console.log(servicos);
     });
   }
 
   deletar(id: number) {
-    this.ServicoService.delete(id);
+    this.service.delete(id);
   }
 
   novoServico() {

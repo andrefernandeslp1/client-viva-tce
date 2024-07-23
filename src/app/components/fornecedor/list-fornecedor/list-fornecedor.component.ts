@@ -5,6 +5,7 @@ import { TituloComponent } from "../../../titulo/titulo.component";
 import { Fornecedor } from '../../../model/fornecedor';
 import { FornecedorService } from '../service/fornecedor.service';
 import { Router, RouterModule } from '@angular/router';
+import { AppService } from '../../../service/app.service';
 
 @Component({
   selector: 'app-list-fornecedor',
@@ -24,7 +25,7 @@ export class ListFornecedorComponent {
 
   fornecedores!: WritableSignal<Fornecedor[]>;
 
-  constructor() {
+  constructor(private router: Router, private appService: AppService) {
     this.fornecedores = this.fornecedoresService.fornecedores;
   }
 
@@ -38,6 +39,14 @@ export class ListFornecedorComponent {
     });
   }
 
+
+  cadastrar(): void {
+    this.router.navigate(['viva-tce', 'fornecedores', 'new'])
+  }
+
+  podeCadastrar(): boolean {
+    return this.appService.userLogged().role === 'admin'
+  }
 
 
 }
