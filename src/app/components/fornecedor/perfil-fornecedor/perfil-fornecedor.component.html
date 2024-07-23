@@ -1,5 +1,30 @@
-<app-header></app-header>
-<app-menu></app-menu>
+
+
 <div class="container">
-  <p>perfil-fornecedor works!</p>
+  <h3 class="mb-4 text-success">Perfil do Fornecedor</h3>
+  <div class="corpo">
+      <div class="coluna-1">
+          <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-inner">
+                  <div class="carousel-item active">
+                      <img src="{{ fornecedor.logo }}" class="d-block w-100" alt="logo do fornecedor">
+                  </div>
+
+              </div>
+
+          </div>
+      </div>
+      <div class="coluna-2">
+          <h4 class="mt-2">Nome: {{fornecedor.nome}}</h4>
+          <h5 class="mt-2">Contato: {{fornecedor.contato}}</h5>
+          @if(userLogged().role == 'admin') {
+            <button type="button" class="btn btn-success mt-3" routerLink="edit">Editar</button>
+          }
+      </div>
+  </div>
+  <h5 class="text-success mt-3" >Serviços deste fornecedor:</h5>
+  <app-list-servico-fornecedor [servicos]="servicos"></app-list-servico-fornecedor>
 </div>
+
+
+

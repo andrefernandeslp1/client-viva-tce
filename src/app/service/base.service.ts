@@ -23,7 +23,7 @@ export abstract class BaseService<T> {
     return this.httpClient.post<T>(this.apiUrl, item);
   }
 
-  update(id: number, item: T): Observable<T> {
+  update(id: any, item: T): Observable<T> {
     return this.httpClient.put<T>(`${this.apiUrl}/${id}`, item);
   }
 
@@ -31,7 +31,5 @@ export abstract class BaseService<T> {
     return this.httpClient.delete(`${this.apiUrl}/${id}`);
   }
 
-  listById(id: number): Observable<T[]> {
-    return this.httpClient.get<T[]>(`${this.apiUrl}?usuarioId=${id}`);
-  }
+
 }

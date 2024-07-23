@@ -59,7 +59,7 @@
       "nome": "teste2",
       "descricao": "teste2",
       "preco": 100,
-      "fornecedorId": -1,
+      "fornecedorId": 1,
       "imagens": [
         "https://www.shutterstock.com/shutterstock/photos/1922200124/display_1500/stock-photo-medical-science-laboratory-portrait-of-beautiful-black-scientist-looking-under-microscope-does-1922200124.jpg"
       ],
@@ -69,7 +69,7 @@
       "nome": "teste3",
       "descricao": "teste3",
       "preco": 100,
-      "fornecedorId": -1,
+      "fornecedorId": 1,
       "imagens": [
         "https://www.shutterstock.com/shutterstock/photos/1986605999/display_1500/stock-photo-happy-indian-mother-having-fun-with-her-daughter-outdoor-family-and-love-concept-focus-on-mum-1986605999.jpg"
       ],
@@ -79,7 +79,7 @@
       "nome": "Natação",
       "descricao": "Natação para todas as idades",
       "preco": 100,
-      "fornecedorId": -1,
+      "fornecedorId": 2,
       "imagens": [
         "https://www.shutterstock.com/shutterstock/photos/2477641905/display_1500/stock-photo-senior-couple-together-in-swimming-pool-2477641905.jpg",
         "https://www.shutterstock.com/shutterstock/photos/2470882107/display_1500/stock-photo-child-in-swimming-pool-floating-on-toy-ring-kids-swim-colorful-rainbow-float-for-young-kids-2470882107.jpg"
@@ -90,7 +90,7 @@
       "nome": "teste x",
       "descricao": "teste x",
       "preco": 1,
-      "fornecedorId": -1,
+      "fornecedorId": 2,
       "imagens": [
         "https://www.shutterstock.com/shutterstock/photos/2479451501/display_1500/stock-photo-synchronized-swimmers-team-performing-artistic-swimming-in-swimming-pool-2479451501.jpg"
       ],
@@ -99,16 +99,22 @@
   ],
   "fornecedores": [
     {
-      "id": "0",
-      "nome": "Barbearia do Zé",
-      "contato": "(11)99999-9999",
-      "logo": "https://www.shutterstock.com/shutterstock/photos/2467077677/display_1500/stock-vector-vintage-barber-shop-logo-haircut-salon-retro-design-old-hairdresser-badge-with-barber-pole-2467077677.jpg"
+      "nome": "Barber Shop",
+      "contato": "5555-5555",
+      "logo": "https://www.shutterstock.com/image-vector/barbershop-logo-poster-banner-design-600nw-2470954695.jpg",
+      "id": "0"
     },
     {
-      "id": "1",
-      "nome": "Pilates da Maria",
-      "contato": "(11)99999-9999",
-      "logo": "https://www.shutterstock.com/shutterstock/photos/2275403891/display_1500/stock-vector-yoga-asana-one-line-drawing-women-body-shape-fitness-workout-concept-continuous-art-linear-2275403891.jpg"
+      "nome": "Maria Pilates",
+      "contato": "9999-9999",
+      "logo": "https://www.shutterstock.com/image-vector/pilates-yoga-logo-icon-design-260nw-2185514971.jpg",
+      "id": "1"
+    },
+    {
+      "nome": "Swim Academy",
+      "contato": "8888-8888",
+      "logo": "https://images-platform.99static.com//2BQKvNlBadGg6qm6BtOCnogJHoU=/0x0:2000x2000/fit-in/500x500/99designs-contests-attachments/126/126013/attachment_126013116",
+      "id": "2"
     }
   ],
   "compras": [
