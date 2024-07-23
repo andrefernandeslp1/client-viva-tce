@@ -25,7 +25,12 @@
           </div>
       </div>
       <div class="coluna-2">
-          <h4 class="mt-2">Nome: {{servico().nome}}</h4>
+          <h4 class="mt-2">Nome: {{servico().nome}}
+            @if(userLogged().role == 'vendedor') {
+              <i class="fa-solid fa-pen p-1" routerLink="edit" style="cursor: pointer;"></i>
+            }
+          </h4>
+
           <h5 class="mt-2">Descrição: {{servico().descricao}}</h5>
           <h6 class="mt-2 text-success">Valor: {{servico().preco}} R$</h6>
           <div class="form-check form-switch mt-3">
