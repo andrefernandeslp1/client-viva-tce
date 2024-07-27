@@ -59,7 +59,7 @@ export class PerfilFornecedorComponent {
   }
 
   // FORMA DE RECUPERAR SERVICOS POR ID DO FORNECEDOR NO ESTILO JSON-SERVER //
-  listServicosByFornecedorId(id: any): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.appService.API_URL}/servicos?fornecedorId=${id}`);
+  listServicosByFornecedorId(id: number) {
+    return this.fornecedorService.getServicos(id)
   }
 }

@@ -14,8 +14,8 @@ export class UsuarioService extends BaseService<Usuario> {
 
   usuario = signal<any>({});
 
-  constructor(httpClient: HttpClient, appService: AppService) {
-    super(httpClient, `${appService.API_URL}/usuarios`);
+  constructor(httpClient: HttpClient) {
+    super(httpClient, 'Usuarios');
   }
 
 

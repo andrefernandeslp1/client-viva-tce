@@ -61,7 +61,7 @@ export class PerfilUsuarioComponent {
   }
 
   // FORMA DE RECUPERAR COMPRAS POR ID DO USUÁRIO NO ESTILO JSON-SERVER //
-  listComprasByUserId(id: any): Observable<any[]> {
-    return this.httpClient.get<any[]>(`${this.appService.API_URL}/compras?usuarioId=${id}`);
+  listComprasByUserId(id: number) {
+    return this.compraService.getComprasUsuario(id)
   }
 }

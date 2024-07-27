@@ -1,6 +1,6 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { AppService } from '../../service/app.service';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { Usuario } from '../../model/usuario';
 import { JWTTokenService } from '../../service/jwttoken.service';
 import { MenuComponent } from "../menu/menu.component";
@@ -20,11 +20,10 @@ export class HeaderComponent {
   tceLogo = './assets/tce.jpg'
 
   appService = inject(AppService);
-  jwtService = inject(JWTTokenService);
 
   usuario!: WritableSignal<Usuario>;
 
-  constructor() {
+  constructor(private router: Router) {
     this.usuario = this.appService.userLogged;
   }
 
@@ -33,9 +32,7 @@ export class HeaderComponent {
   }
 
   logout(): void {
-    localStorage.clear();
-    this.usuario.set({} as Usuario);
-    console.log(this.usuario());
-    this.jwtService.decodedToken = undefined;
+    this.appService.logout()
+    this.router.navigate(['login'])
   }
 }

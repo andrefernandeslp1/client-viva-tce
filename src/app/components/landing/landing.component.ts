@@ -1,9 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators  } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../../service/app.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-landing',
@@ -21,19 +22,28 @@ export class LandingComponent {
 
   isLogin = true
 
-  form: FormGroup;
+  cadastroForm: FormGroup = this.formBuilder.group({
+    nome: [null, Validators.required],
+    email: [null, Validators.required],
+    senha: [null, Validators.required],
+    telefone: [null, Validators.required],
+    role: ['cliente']
+  });
+  loginForm: FormGroup = this.formBuilder.group({
+    email: [null, Validators.required],
+    senha: [null, Validators.required],
+  });
 
   service = inject(AppService);
-  formBuilder = inject(FormBuilder);
   router = inject(Router);
 
-  constructor(private snackBar:MatSnackBar)
+  constructor(private snackBar:MatSnackBar, private formBuilder: FormBuilder)
   {
-    this.form = this.formBuilder.group({
-      nome: [null],
+    this.cadastroForm = this.formBuilder.group({
+      nome: [null, Validators.required],
       email: [null, Validators.required],
       senha: [null, Validators.required],
-      telefone: [null],
+      telefone: [null, Validators.required],
       role: ['cliente']
     });
   }
@@ -43,11 +53,16 @@ export class LandingComponent {
   }
 
   login() {
-    if(this.form.valid) this.service.login(this.form.value, () => {this.router.navigate(['viva-tce'])})
+    if(this.loginForm.valid) {
+      this.service.login(this.loginForm.value, () => {
+        this.router.navigate(['../viva-tce'])
+      })
+    }
   }
 
   cadastrar() {
-    this.service.cadastrar(this.form.value, () => {this.isLogin = true})
+    if(this.cadastroForm.valid)
+      this.service.cadastrar(this.cadastroForm.value, () => {this.isLogin = true})
   }
 
 }

@@ -45,7 +45,8 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
+            component: ListServicoComponent
+            //loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
           },
           {
             path: 'new',
@@ -100,11 +101,11 @@ export const routes: Routes = [
         // FORNECEDOR
         {
           path: 'fornecedores',
+          canActivate: [authGuard],
           children: [
             {
               path: '',
               loadComponent: () => import('./components/fornecedor/list-fornecedor/list-fornecedor.component').then(m => m.ListFornecedorComponent),
-              canActivate: [authGuard],
             },
             {
               path: 'new',

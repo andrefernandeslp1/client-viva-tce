@@ -4,11 +4,11 @@ import { Observable } from 'rxjs';
 
 export abstract class BaseService<T> {
   protected httpClient: HttpClient;
-  protected apiUrl: string;
+  protected apiUrl: string = 'http://localhost:5201/';
 
-  constructor(httpClient: HttpClient, apiUrl: string) {
+  constructor(httpClient: HttpClient, apiPath: string) {
     this.httpClient = httpClient;
-    this.apiUrl = apiUrl;
+    this.apiUrl += apiPath
   }
 
   list(): Observable<T[]> {

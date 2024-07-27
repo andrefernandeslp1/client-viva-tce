@@ -15,7 +15,7 @@
       <button (click)="select()" [class]="isLogin? 'not-selected' : 'selected toggle'">Cadastro</button>
     </div>
       @if (!isLogin) {
-            <form class="form-group" [formGroup]="form" (ngSubmit)="cadastrar()">
+            <form class="form-group" [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
               <div class="mb-3">
                 <label class="form-label">Nome</label>
                 <input type="text" class="form-control" formControlName="nome">
@@ -35,7 +35,7 @@
               <button type="submit" class="btn btn-success">Cadastrar-se</button>
             </form>
       } @else {
-            <form class="form-group" [formGroup]="form" (ngSubmit)="login()">
+            <form class="form-group" [formGroup]="loginForm" (ngSubmit)="login()">
               <div class="mb-3">
                 <label class="form-label">E-mail</label>
                 <input type="text" class="form-control" formControlName="email">

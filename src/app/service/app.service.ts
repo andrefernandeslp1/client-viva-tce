@@ -15,7 +15,7 @@ export class AppService {
 
   public userLogged = signal<any>({});
 
-  public API_URL = 'http://localhost:5201/api/Authentication';
+  private API_URL = 'http://localhost:5201/Authentication';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
     const usuarioLogado = this.jwtTokenService.getUser()
@@ -45,5 +45,11 @@ export class AppService {
       }),
       error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.userLogged.set({});
+    this.jwtTokenService.decodedToken = undefined;
   }
 }
