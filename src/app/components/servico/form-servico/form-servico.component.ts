@@ -48,6 +48,7 @@ export class FormServicoComponent {
 
   ngOnInit() {
     this.serviceId = this.route.snapshot.paramMap.get('id');
+    console.log(this.userLogged().fornecedorId)
   }
 
   onAdd() {
