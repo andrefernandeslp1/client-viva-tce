@@ -1,5 +1,5 @@
 // base.service.ts
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export abstract class BaseService<T> {
@@ -12,23 +12,28 @@ export abstract class BaseService<T> {
   }
 
   list(): Observable<T[]> {
-    return this.httpClient.get<T[]>(this.apiUrl);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    return this.httpClient.get<T[]>(this.apiUrl, { headers });
   }
 
   getOne(id: number): Observable<T> {
-    return this.httpClient.get<T>(`${this.apiUrl}/${id}`);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    return this.httpClient.get<T>(`${this.apiUrl}/${id}`, { headers });
   }
 
   create(item: T): Observable<T> {
-    return this.httpClient.post<T>(this.apiUrl, item);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    return this.httpClient.post<T>(this.apiUrl, item, { headers });
   }
 
   update(id: any, item: T): Observable<T> {
-    return this.httpClient.put<T>(`${this.apiUrl}/${id}`, item);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    return this.httpClient.put<T>(`${this.apiUrl}/${id}`, item, { headers });
   }
 
   delete(id: number): Observable<any> {
-    return this.httpClient.delete(`${this.apiUrl}/${id}`);
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    return this.httpClient.delete(`${this.apiUrl}/${id}`, { headers });
   }
 
 

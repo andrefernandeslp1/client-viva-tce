@@ -1,7 +1,7 @@
 
 <div class="container">
 
-  <h4 class="mt-2">Form Usuário</h4>
+  <h4 class="mt-2">{{ usuarioId ? 'Editar Usuário' : 'Cadastrar Usuário' }}</h4>
   <form class="form-group" [formGroup]="form" >
     <div class="mb-3">
       <label class="form-label">Nome</label>
@@ -28,7 +28,7 @@
     </select>
 
     @if(this.form.get('role')?.value == 'vendedor') {
-      <label class="form-label mt-2">ID do Fornecedor</label>
+      <label class="form-label mt-2">Fornecedor</label>
       <select class="form-select" formControlName="fornecedorId">
         @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
           <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>

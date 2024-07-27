@@ -22,19 +22,29 @@ export class AppService {
       this.userLogged().nome = this.jwtTokenService.getUser();
       this.userLogged().email = this.jwtTokenService.getEmail();
       this.userLogged().role = this.jwtTokenService.getRole();
-      if(this.userLogged().role === 'vendedor') {
+      if(this.userLogged().role == 'vendedor') {
         this.userLogged().fornecedorId = localStorage.getItem('fornecedorId');
       }
     }
     else {
       this.userLogged.set({
         id: 0,
-        nome: 'John',
+        nome: '',
         email: '',
-        role: 'admin',
+        role: '',
         // fornecedorId: 0
     });
    }
+  }
+
+  setLocalStorage(user: any): void {
+    localStorage.setItem('usuarioId', user.id);
+    localStorage.setItem('nome', user.nome);
+    localStorage.setItem('email', user.email);
+    localStorage.setItem('role', user.role);
+    if(localStorage.getItem('role') == 'vendedor') {
+      localStorage.setItem('fornecedorId', user.fornecedorId);
+    }
   }
 
   signup(usuario: Usuario): Observable<HttpResponse<any>>{
@@ -45,10 +55,10 @@ export class AppService {
         if (token) {
           localStorage.setItem('jwt-token', token);
         }
-        if(response.body.usuario.id) {
-          localStorage.setItem('userId', response.body.usuario.id);
+        const usuario = response.body?.usuario;
+        if(usuario) {
+          this.setLocalStorage(response.body.usuario);
         }
-        this.userLogged.set(response.body.usuario);
       })
     );
   }
@@ -61,12 +71,14 @@ export class AppService {
         if (token) {
           localStorage.setItem('jwt-token', token);
         }
-        if(response.body.usuario.id) {
-          localStorage.setItem('userId', response.body.usuario.id);
+        const usuario = response.body?.usuario;
+        if(usuario) {
+          this.setLocalStorage(response.body.usuario);
         }
-        this.userLogged.set(response.body.usuario);
+
       })
     );
   }
+
 
 }
