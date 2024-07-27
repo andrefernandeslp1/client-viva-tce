@@ -32,6 +32,15 @@
       "fornecedorId": null,
       "senha": "teste123",
       "telefone": "99999999999999"
+    },
+    {
+      "nome": "ANDRE",
+      "email": "andre@gmail.com",
+      "role": "admin",
+      "fornecedorId": null,
+      "senha": "1234",
+      "telefone": "0000-0000",
+      "id": "cackW0w"
     }
   ],
   "servicos": [
@@ -46,32 +55,22 @@
       "id": "0"
     },
     {
-      "id": "1",
-      "nome": "Pilates",
-      "descricao": "'Pilates para iniciantes'",
-      "preco": 100,
-      "imagens": [
-        "https://i0.wp.com/nutrimental.com.br/wp-content/uploads/2019/09/mulher-praticando-pilates.jpg?fit=800%2C562&ssl=1"
-      ],
-      "fornecerId": 0
-    },
-    {
-      "nome": "teste2",
-      "descricao": "teste2",
+      "nome": "Yoga",
+      "descricao": "Hot Yoga",
       "preco": 100,
       "fornecedorId": 1,
       "imagens": [
-        "https://www.shutterstock.com/shutterstock/photos/1922200124/display_1500/stock-photo-medical-science-laboratory-portrait-of-beautiful-black-scientist-looking-under-microscope-does-1922200124.jpg"
+        "https://jpimg.com.br/uploads/2023/11/5-posicoes-de-ioga-para-melhorar-a-saude-sexual-feminina.jpg"
       ],
       "id": "7"
     },
     {
-      "nome": "teste3",
-      "descricao": "teste3",
+      "nome": "Funcional",
+      "descricao": "Power up your body",
       "preco": 100,
       "fornecedorId": 1,
       "imagens": [
-        "https://www.shutterstock.com/shutterstock/photos/1986605999/display_1500/stock-photo-happy-indian-mother-having-fun-with-her-daughter-outdoor-family-and-love-concept-focus-on-mum-1986605999.jpg"
+        "https://hubconteudo.dasa.com.br/wp-content/uploads/2022/08/abre_musculacao_saude.jpg"
       ],
       "id": "8"
     },
@@ -81,49 +80,45 @@
       "preco": 100,
       "fornecedorId": 2,
       "imagens": [
-        "https://www.shutterstock.com/shutterstock/photos/2477641905/display_1500/stock-photo-senior-couple-together-in-swimming-pool-2477641905.jpg",
-        "https://www.shutterstock.com/shutterstock/photos/2470882107/display_1500/stock-photo-child-in-swimming-pool-floating-on-toy-ring-kids-swim-colorful-rainbow-float-for-young-kids-2470882107.jpg"
+        "https://cdn.atletis.com.br/atletis-website/base/066/fea/f5c/beneficios-natacao-corpo.jpg"
       ],
       "id": "9"
-    },
-    {
-      "nome": "teste x",
-      "descricao": "teste x",
-      "preco": 1,
-      "fornecedorId": 2,
-      "imagens": [
-        "https://www.shutterstock.com/shutterstock/photos/2479451501/display_1500/stock-photo-synchronized-swimmers-team-performing-artistic-swimming-in-swimming-pool-2479451501.jpg"
-      ],
-      "id": "10"
     }
   ],
   "fornecedores": [
     {
       "nome": "Barber Shop",
-      "contato": "5555-5555",
-      "logo": "https://www.shutterstock.com/image-vector/barbershop-logo-poster-banner-design-600nw-2470954695.jpg",
+      "contato": "12345-6789",
+      "logo": "https://t4.ftcdn.net/jpg/03/78/83/15/360_F_378831540_10ShB9tnvs2quli24qe53ljhvsL07gjz.jpg",
       "id": "0"
     },
     {
-      "nome": "Maria Pilates",
-      "contato": "9999-9999",
-      "logo": "https://www.shutterstock.com/image-vector/pilates-yoga-logo-icon-design-260nw-2185514971.jpg",
+      "nome": "Pilate Home",
+      "contato": "12345-6789",
+      "logo": "https://st3.depositphotos.com/1030509/15536/v/450/depositphotos_155360392-stock-illustration-pilates-class-lesson-logo-template.jpg",
       "id": "1"
     },
     {
-      "nome": "Swim Academy",
-      "contato": "8888-8888",
-      "logo": "https://images-platform.99static.com//2BQKvNlBadGg6qm6BtOCnogJHoU=/0x0:2000x2000/fit-in/500x500/99designs-contests-attachments/126/126013/attachment_126013116",
+      "nome": "Swim World",
+      "contato": "12345-6789",
+      "logo": "https://img.freepik.com/free-vector/hand-drawn-flat-design-swimming-logo_23-2149380565.jpg",
       "id": "2"
     }
   ],
   "compras": [
     {
-      "id": "6c5b",
-      "servicoId": 0,
+      "servicoId": 8,
       "usuarioId": 0,
-      "data": "2024-07-23T00:47:32.495Z",
-      "assinatura": false
+      "data": "2024-07-23T02:55:13.604Z",
+      "assinatura": true,
+      "id": 3
+    },
+    {
+      "servicoId": 9,
+      "usuarioId": 0,
+      "data": "2024-07-23T02:55:16.767Z",
+      "assinatura": true,
+      "id": 4
     }
   ]
 }

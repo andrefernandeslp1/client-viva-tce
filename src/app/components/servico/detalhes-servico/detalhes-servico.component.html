@@ -25,6 +25,11 @@
             </div>
         </div>
         <div class="coluna-2">
+            <h4 class="mt-2">Nome: {{servico.nome}}
+                @if(userLogged().role === 'vendedor' && userLogged().fornecedorId === servico.fornecedorId) {
+                  <i class="fa-solid fa-pen p-1" routerLink="edit" style="cursor: pointer;"></i>
+                }
+              </h4>
             <h4 class="mt-2">Nome: {{servico.nome}}</h4>
             <h5 class="mt-2">Descrição: {{servico.descricao}}</h5>
             <h6 class="mt-2 text-success">Valor: {{servico.preco}} R$</h6>
@@ -35,5 +40,5 @@
             <button type="button" class="btn btn-success mt-3" (click)="comprar()">Comprar</button>
         </div>
     </div>
-  </div>
+</div>
 }

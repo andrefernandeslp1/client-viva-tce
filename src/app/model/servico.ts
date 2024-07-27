@@ -4,6 +4,5 @@ export interface Servico {
   descricao: string;
   preco: number;
   imagens: Array<String>;
-  fornecerId: number;
-
+  fornecedorId: number;
 }
