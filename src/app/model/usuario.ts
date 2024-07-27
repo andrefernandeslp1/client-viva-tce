@@ -1,9 +1,9 @@
 export interface Usuario {
   id: number;
   nome: string;
-  senha: string;
+  senha?: string;
   email: string;
-  telefone: string;
+  telefone?: string;
   role: string;
   fornecedorId?: number;
 }

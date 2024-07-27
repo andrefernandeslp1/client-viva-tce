@@ -14,7 +14,7 @@ import { PerfilFornecedorComponent } from './components/fornecedor/perfil-fornec
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './home/home.component';
-import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { PaginaNaoEncontradaComponent } from './components/pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 export const routes: Routes = [
 

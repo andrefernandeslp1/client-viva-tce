@@ -15,7 +15,7 @@
       <button (click)="select()" [class]="isLogin? 'not-selected' : 'selected toggle'">Cadastro</button>
     </div>
       @if (!isLogin) {
-            <form class="form-group" [formGroup]="form" (ngSubmit)="onSignUp()">
+            <form class="form-group" [formGroup]="form" (ngSubmit)="cadastrar()">
               <div class="mb-3">
                 <label class="form-label">Nome</label>
                 <input type="text" class="form-control" formControlName="nome">
@@ -25,20 +25,24 @@
                 <input type="text" class="form-control" formControlName="email">
               </div>
               <div class="mb-3">
+                <label class="form-label">Telefone</label>
+                <input type="text" class="form-control" formControlName="telefone">
+              </div>
+              <div class="mb-3">
                 <label class="form-label">Senha</label>
-                <input type="password" class="form-control" formControlName="password">
+                <input type="password" class="form-control" formControlName="senha">
               </div>
               <button type="submit" class="btn btn-success">Cadastrar-se</button>
             </form>
       } @else {
-            <form class="form-group" [formGroup]="form" (ngSubmit)="onSignIn()">
+            <form class="form-group" [formGroup]="form" (ngSubmit)="login()">
               <div class="mb-3">
                 <label class="form-label">E-mail</label>
                 <input type="text" class="form-control" formControlName="email">
               </div>
               <div class="mb-3">
                 <label class="form-label">Senha</label>
-                <input type="password" class="form-control" formControlName="password">
+                <input type="password" class="form-control" formControlName="senha">
               </div>
               <button type="submit" class="btn btn-success">Entrar</button>
             </form>

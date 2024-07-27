@@ -1,7 +1,7 @@
 import { Component, inject, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
-import { TituloComponent } from "../../../titulo/titulo.component";
+import { TituloComponent } from "../../titulo/titulo.component";
 import { AppService } from '../../../service/app.service';
 import { UsuarioService } from '../service/usuario.service';
 import { Router, RouterModule } from '@angular/router';

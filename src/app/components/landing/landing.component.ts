@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule  } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators  } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -31,8 +31,10 @@ export class LandingComponent {
   {
     this.form = this.formBuilder.group({
       nome: [null],
-      email: [null],
-      password: [null]
+      email: [null, Validators.required],
+      senha: [null, Validators.required],
+      telefone: [null],
+      role: ['cliente']
     });
   }
 
@@ -40,28 +42,12 @@ export class LandingComponent {
     this.isLogin = !this.isLogin
   }
 
-  onSignUp() {
-    this.service.signup(this.form.value).subscribe({
-      next: (v) => {
-        console.log(v),
-        this.router.navigate(['/home']);
-      },
-      // error: (e) => console.error(e)
-      error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
-      complete: () => console.log('complete')
-    });
+  login() {
+    if(this.form.valid) this.service.login(this.form.value, () => {this.router.navigate(['viva-tce'])})
   }
 
-  onSignIn() {
-    this.service.signin(this.form.value).subscribe({
-      next: (v) => {
-        console.log(v),
-        this.router.navigate(['/home']);
-      },
-      // error: (e) => console.error(e)
-      error: (e) => this.snackBar.open(e.error, "⚠️", {duration:3000 }),
-      complete: () => console.log('complete')
-    });
+  cadastrar() {
+    this.service.cadastrar(this.form.value, () => {this.isLogin = true})
   }
 
 }

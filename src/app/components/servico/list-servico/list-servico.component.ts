@@ -4,7 +4,7 @@ import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { Servico } from '../../../model/servico';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { TituloComponent } from "../../../titulo/titulo.component";
+import { TituloComponent } from "../../titulo/titulo.component";
 import { AppService } from '../../../service/app.service';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';

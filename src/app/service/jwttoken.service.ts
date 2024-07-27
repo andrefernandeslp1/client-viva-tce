@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { jwtDecode, JwtPayload } from 'jwt-decode';
 import {LocalStorageService} from "./local-storage.service";
+import { Usuario } from '../model/usuario';
 // import {AppCookieService} from "./app-cookie.service";
 
 @Injectable({
@@ -8,8 +9,8 @@ import {LocalStorageService} from "./local-storage.service";
 })
 export class JWTTokenService {
 
-  jwtToken: string | null | undefined;
-  decodedToken: JwtPayload & {id: number; nome: string; email: string; role: string; fornecedorId: number} | undefined;
+  jwtToken: string | null;
+  decodedToken?: JwtPayload & Usuario;
 
   constructor(private authStorageService: LocalStorageService)
   {
@@ -19,7 +20,7 @@ export class JWTTokenService {
     }
   }
 
-  getUser() {
+  getNome() {
     console.log(this.decodedToken);
     return this.decodedToken ? this.decodedToken.nome : null;
   }
@@ -38,5 +39,19 @@ export class JWTTokenService {
 
   getUserFornecedor() {
     return this.decodedToken ? this.decodedToken.fornecedorId : null;
+  }
+
+  getUser(): Usuario | null {
+    if(this.decodedToken){
+      const usuario = {
+        id: this.decodedToken.id,
+        nome: this.decodedToken.nome,
+        email: this.decodedToken.email,
+        role: this.decodedToken.role,
+        fornecedorId: this.decodedToken.fornecedorId
+      };
+      return usuario;
+    }
+    return null;
   }
 }

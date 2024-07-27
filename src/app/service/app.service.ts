@@ -3,82 +3,47 @@ import { inject, Injectable, signal } from '@angular/core';
 import { JWTTokenService } from './jwttoken.service';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
 
-  jwtTokenService = inject(JWTTokenService);
+  private jwtTokenService = inject(JWTTokenService);
 
-  userLogged = signal<any>({});
+  public userLogged = signal<any>({});
 
-  public API_URL = 'http://localhost:3000';
+  public API_URL = 'http://localhost:5201/api/Authentication';
 
-  constructor(private httpClient: HttpClient) {
-    const token = localStorage.getItem('jwt-token');
-    if (token) {
-      this.userLogged().id = this.jwtTokenService.getUserId();
-      this.userLogged().nome = this.jwtTokenService.getUser();
-      this.userLogged().email = this.jwtTokenService.getEmail();
-      this.userLogged().role = this.jwtTokenService.getRole();
-      if(this.userLogged().role == 'vendedor') {
-        this.userLogged().fornecedorId = localStorage.getItem('fornecedorId');
-      }
-    }
-    else {
-      this.userLogged.set({
-        id: 0,
-        nome: '',
-        email: '',
-        role: '',
-        // fornecedorId: 0
-    });
-   }
-  }
-
-  setLocalStorage(user: any): void {
-    localStorage.setItem('usuarioId', user.id);
-    localStorage.setItem('nome', user.nome);
-    localStorage.setItem('email', user.email);
-    localStorage.setItem('role', user.role);
-    if(localStorage.getItem('role') == 'vendedor') {
-      localStorage.setItem('fornecedorId', user.fornecedorId);
+  constructor(private http: HttpClient, private snackBar: MatSnackBar) {
+    const usuarioLogado = this.jwtTokenService.getUser()
+    if(usuarioLogado){
+      this.userLogged.set(usuarioLogado)
     }
   }
 
-  signup(usuario: Usuario): Observable<HttpResponse<any>>{
-    return this.httpClient.post<any>(this.API_URL + "/signup", usuario, { observe: 'response' }).pipe(
-      tap(response => {
-
-        const token = response.body?.accessToken;
+  login(usuario: Usuario, onSuccess: Function) {
+    return this.http.post<any>(this.API_URL + "/login", usuario, { observe: 'response' }).subscribe({
+      next: (response => {
+        const token = response.body?.token;
         if (token) {
           localStorage.setItem('jwt-token', token);
         }
-        const usuario = response.body?.usuario;
-        if(usuario) {
-          this.setLocalStorage(response.body.usuario);
-        }
-      })
-    );
+        onSuccess()
+      }),
+      error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
+    })
   }
 
-  signin(usuario: Usuario): Observable<HttpResponse<any>> {
-    return this.httpClient.post<any>(this.API_URL + "/signin", usuario, { observe: 'response' }).pipe(
-      tap(response => {
-
-        const token = response.body?.accessToken;
-        if (token) {
-          localStorage.setItem('jwt-token', token);
-        }
-        const usuario = response.body?.usuario;
-        if(usuario) {
-          this.setLocalStorage(response.body.usuario);
-        }
-
-      })
-    );
+  cadastrar(usuario: Usuario, onSuccess: Function) {
+    return this.http.post<any>(this.API_URL + "/cadastrar", usuario, { observe: 'response' }).subscribe({
+      next: (response => {
+        this.snackBar.open(`${response.body.nome} foi cadastrado com sucesso` , "", {duration:3000 })
+        onSuccess()
+      }),
+      error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
+    })
   }
-
-
 }
