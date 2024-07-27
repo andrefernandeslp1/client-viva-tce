@@ -51,6 +51,7 @@ export class FormUsuarioComponent {
   ngOnInit() {
     this.listarFornecedores();
     this.usuarioId = this.route.snapshot.paramMap.get('id');
+    this.getUserById();
   }
 
   listarFornecedores() {
@@ -71,4 +72,15 @@ export class FormUsuarioComponent {
       this.router.navigate(['/viva-tce/usuarios']);
     });
   }
+
+  getUserById() {
+    if(this.usuarioId) {
+      this.usuarioService.getOne(this.usuarioId).subscribe(usuario => {
+        this.form.patchValue(usuario);
+        console.log(usuario);
+      });
+    }
+  }
+
+
 }

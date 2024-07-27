@@ -32,6 +32,15 @@
       "fornecedorId": null,
       "senha": "teste123",
       "telefone": "99999999999999"
+    },
+    {
+      "nome": "ANDRE",
+      "email": "andre@gmail.com",
+      "role": "admin",
+      "fornecedorId": null,
+      "senha": "1234",
+      "telefone": "0000-0000",
+      "id": "cackW0w"
     }
   ],
   "servicos": [
