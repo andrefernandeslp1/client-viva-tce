@@ -35,4 +35,8 @@ export class HeaderComponent {
     this.appService.logout()
     this.router.navigate(['login'])
   }
+
+  editarPerfil(): void {
+    this.router.navigate(['viva-tce', 'usuarios', this.usuario().id, 'edit'])
+  }
 }

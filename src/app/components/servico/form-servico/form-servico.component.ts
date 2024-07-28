@@ -1,8 +1,8 @@
 
-import { Component, inject, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
-import { ServicoService } from '../service/servico.service';
+import { ServicoService } from '../../../service/servico.service';
 import { FormGroup, FormBuilder, ReactiveFormsModule, Validators, FormArray  } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -22,7 +22,7 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './form-servico.component.html',
   styleUrl: './form-servico.component.css'
 })
-export class FormServicoComponent {
+export class FormServicoComponent implements OnInit {
 
   form: FormGroup;
 
@@ -33,22 +33,28 @@ export class FormServicoComponent {
 
   userLogged!: WritableSignal<any>;
 
-  serviceId!: any;
+  idServico?: string | null;
 
   constructor(private route: ActivatedRoute) {
+    this.idServico = route.snapshot.paramMap.get('id');
     this.userLogged = this.appService.userLogged;
     this.form = this.formBuilder.group({
+      id: [this.idServico],
       nome: [null],
       descricao: [null],
       preco: [null],
-      imagens: this.formBuilder.array(['']),
+      imagens: [null],
       fornecedorId: [this.userLogged().fornecedorId]
     });
   }
 
   ngOnInit() {
-    this.serviceId = this.route.snapshot.paramMap.get('id');
-    console.log(this.userLogged().fornecedorId)
+    if(this.idServico){
+      this.servicoService.getOne(parseInt(this.idServico)).subscribe((data) => {
+        this.form.patchValue(data)
+        this.imagemArray = data.imagens.split(" ; ")
+      })
+    }
   }
 
   onAdd() {
@@ -73,8 +79,7 @@ export class FormServicoComponent {
     console.log(this.form.value);
   }
   atualizarImagens(novasImagens: string[]) {
-    const imagensArray = this.formBuilder.array(novasImagens.map(imagem => this.formBuilder.control(imagem)));
-    this.form.setControl('imagens', imagensArray);
+    this.form.patchValue({imagens: this.imagemArray.join(" ; ")})
   }
   removerURL(index: number) {
     this.imagemArray.splice(index, 1);

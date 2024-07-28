@@ -1,13 +1,14 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { inject } from '@angular/core';
-import { JWTTokenService } from './service/jwttoken.service';
+import { JWTTokenService } from '../service/jwttoken.service';
+import { AppService } from '../service/app.service';
 
 export const roleGuard: CanActivateFn = (route, state) => {
 
-  const jwtTokenService = inject(JWTTokenService);
+  const appService = inject(AppService);
   const router  = inject(Router);
 
-  const role = jwtTokenService.getRole();
+  const role = appService.userLogged().role;
   const expectedRoles = route.data['expectedRoles'];
 
   if (!role || !expectedRoles.includes(role)) {

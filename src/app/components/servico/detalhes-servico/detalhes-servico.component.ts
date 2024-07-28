@@ -6,7 +6,7 @@ import { ServicoUsuario } from '../../../model/servico-usuario';
 import { Servico } from '../../../model/servico';
 import { AppService } from '../../../service/app.service';
 import { ActivatedRoute, Router, RouterModule, RouterOutlet } from '@angular/router';
-import { ServicoService } from '../service/servico.service';
+import { ServicoService } from '../../../service/servico.service';
 import { FormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
@@ -48,6 +48,7 @@ export class DetalhesServicoComponent {
     this.servicoId = servicoIdString ? parseInt(servicoIdString) : 0;
     this.userLogged = this.appService.userLogged;
     this.servico$ = this.servicoService.getOne(this.servicoId)
+
   }
 
   ngOnInit() {

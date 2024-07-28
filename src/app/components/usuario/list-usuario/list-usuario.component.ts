@@ -3,13 +3,13 @@ import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { TituloComponent } from "../../titulo/titulo.component";
 import { AppService } from '../../../service/app.service';
-import { UsuarioService } from '../service/usuario.service';
+import { UsuarioService } from '../../../service/usuario.service';
 import { Router, RouterModule } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Usuario } from '../../../model/usuario';
 import { AsyncPipe } from '@angular/common';
 import { Fornecedor } from '../../../model/fornecedor';
-import { FornecedorService } from '../../fornecedor/service/fornecedor.service';
+import { FornecedorService } from '../../../service/fornecedor.service';
 
 @Component({
   selector: 'app-list-usuario',

@@ -9,49 +9,26 @@ import { Usuario } from '../model/usuario';
 })
 export class JWTTokenService {
 
-  jwtToken: string | null;
-  decodedToken?: JwtPayload & Usuario;
-
   constructor(private authStorageService: LocalStorageService)
   {
-    this.jwtToken = this.authStorageService.get("jwt-token");
-    if (this.jwtToken) {
-      this.decodedToken = jwtDecode(this.jwtToken)
-    }
-  }
-
-  getNome() {
-    console.log(this.decodedToken);
-    return this.decodedToken ? this.decodedToken.nome : null;
-  }
-
-  getEmail() {
-    return this.decodedToken ? this.decodedToken.email : null;
-  }
-
-  getRole() {
-    return this.decodedToken ? this.decodedToken.role : null;
-  }
-
-  getUserId() {
-    return this.decodedToken ? this.decodedToken.id : null;
-  }
-
-  getUserFornecedor() {
-    return this.decodedToken ? this.decodedToken.fornecedorId : null;
   }
 
   getUser(): Usuario | null {
-    if(this.decodedToken){
-      const usuario = {
-        id: this.decodedToken.id,
-        nome: this.decodedToken.nome,
-        email: this.decodedToken.email,
-        role: this.decodedToken.role,
-        fornecedorId: this.decodedToken.fornecedorId
-      };
-      return usuario;
+    const jwtToken = this.authStorageService.get("jwt-token");
+    if(jwtToken){
+      const decodedToken: Usuario & JwtPayload = jwtDecode(jwtToken)
+      if(decodedToken){
+        const usuario = {
+          id: decodedToken.id,
+          nome: decodedToken.nome,
+          email: decodedToken.email,
+          role: decodedToken.role,
+          fornecedorId: decodedToken.fornecedorId
+        };
+        return usuario;
+      }
     }
+    
     return null;
   }
 }

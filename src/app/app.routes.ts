@@ -2,8 +2,8 @@ import { Routes } from '@angular/router';
 import { ListServicoComponent } from './components/servico/list-servico/list-servico.component';
 import { UnauthorizedComponent } from './components/unauthorized/unauthorized.component';
 import { FormServicoComponent } from './components/servico/form-servico/form-servico.component';
-import { authGuard } from './auth.guard';
-import { roleGuard } from './role.guard';
+import { authGuard } from './guards/auth.guard';
+import { roleGuard } from './guards/role.guard';
 import { DetalhesServicoComponent } from './components/servico/detalhes-servico/detalhes-servico.component';
 import { ListUsuarioComponent } from './components/usuario/list-usuario/list-usuario.component';
 import { FormUsuarioComponent } from './components/usuario/form-usuario/form-usuario.component';
@@ -13,8 +13,11 @@ import { ListFornecedorComponent } from './components/fornecedor/list-fornecedor
 import { PerfilFornecedorComponent } from './components/fornecedor/perfil-fornecedor/perfil-fornecedor.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { PaginaNaoEncontradaComponent } from './components/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { usuarioGuard } from './guards/usuario.guard';
+import { fornecedorGuard } from './guards/fornecedor.guard';
+import { servicoGuard } from './guards/servico.guard';
 
 export const routes: Routes = [
 
@@ -45,8 +48,7 @@ export const routes: Routes = [
         children: [
           {
             path: '',
-            component: ListServicoComponent
-            //loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
+            loadComponent: () => import('./components/servico/list-servico/list-servico.component').then(m => m.ListServicoComponent),
           },
           {
             path: 'new',
@@ -55,9 +57,9 @@ export const routes: Routes = [
             data: {expectedRoles: ['vendedor']}
           },
           {
-            path: ':id/edit',
+            path: ':fornecedor/:id/edit',
             component: FormServicoComponent,
-            canActivate: [roleGuard],
+            canActivate: [servicoGuard],
             data: {expectedRoles: ['vendedor']}
           },
           {
@@ -86,14 +88,12 @@ export const routes: Routes = [
             {
               path: ':id/edit',
               component: FormUsuarioComponent,
-              canActivate: [roleGuard],
-              data: {expectedRoles: ['admin', 'cliente']}
+              canActivate: [usuarioGuard],
             },
             {
               path: ':id/perfil',
               component: PerfilUsuarioComponent,
-              canActivate: [roleGuard],
-              data: {expectedRoles: ['admin', 'cliente']}
+              canActivate: [usuarioGuard],
             },
           ]
         },
@@ -116,8 +116,7 @@ export const routes: Routes = [
             {
               path: ':id/edit',
               component: FormFornecedorComponent,
-              canActivate: [roleGuard],
-              data: {expectedRoles: ['admin']}
+              canActivate: [fornecedorGuard],
             },
             {
               path: ':id',

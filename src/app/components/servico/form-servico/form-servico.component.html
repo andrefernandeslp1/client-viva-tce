@@ -27,11 +27,11 @@
       <p>- {{imagemURL}}<button type="button" class="btn btn-danger btn-sm" style="float:right" (click)="removerURL(idx)">Remover</button></p>
     }
 
-    @if(serviceId == null) {
+    @if(idServico == null) {
       <button class="btn btn-success" (click)="onAdd()">Cadastrar</button>
 
     }@else {
-      <button class="btn btn-success" (click)="onEdit(serviceId, form.value)">Editar</button>
+      <button class="btn btn-success" (click)="onEdit(idServico, form.value)">Editar</button>
     }
 
 

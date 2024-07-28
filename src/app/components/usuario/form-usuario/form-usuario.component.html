@@ -1,15 +1,8 @@
-
-<div class="container">
-
-  <h4 class="mt-2">{{ usuarioId ? 'Editar Usuário' : 'Cadastrar Usuário' }}</h4>
-  <form class="form-group" [formGroup]="form" >
+<app-titulo [showBtn]="false" [titulo]="usuarioId? 'Editar Perfil' : 'Cadastrar Usuário'"></app-titulo>
+  <form class="form-group p-4" [formGroup]="form" >
     <div class="mb-3">
       <label class="form-label">Nome</label>
       <input type="text" class="form-control" formControlName="nome">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Senha</label>
-      <input type="text" class="form-control" formControlName="senha">
     </div>
     <div class="mb-3">
       <label class="form-label">Email</label>
@@ -19,21 +12,27 @@
       <label class="form-label">Telefone</label>
       <input type="text" class="form-control" formControlName="telefone">
     </div>
+    <div class="mb-3">
+      <label class="form-label">{{usuarioId? 'Confirme a senha' : 'Senha'}}</label>
+      <input [type]="usuarioId? 'password' : 'text'" class="form-control" formControlName="senha">
+    </div>
 
-    <label class="form-label">Papel</label>
-    <select class="form-select" formControlName="role">
-      @for(role of roles; track role; let idx = $index) {
-        <option value="{{role}}">{{role}}</option>
-      }
-    </select>
-
-    @if(this.form.get('role')?.value == 'vendedor') {
-      <label class="form-label mt-2">Fornecedor</label>
-      <select class="form-select" formControlName="fornecedorId">
-        @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
-          <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>
+    @if (userLogged().role === 'admin') {
+      <label class="form-label">Papel</label>
+      <select class="form-select" formControlName="role">
+        @for(role of roles; track role; let idx = $index) {
+          <option value="{{role}}">{{role}}</option>
         }
       </select>
+
+      @if(this.form.get('role')?.value == 'vendedor') {
+        <label class="form-label mt-2">Fornecedor</label>
+        <select class="form-select" formControlName="fornecedorId">
+          @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
+            <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>
+          }
+        </select>
+      }
     }
 
     @if(usuarioId == null) {
@@ -44,8 +43,3 @@
     }
 
   </form>
-
-
-
-
-</div>

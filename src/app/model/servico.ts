@@ -3,6 +3,6 @@ export interface Servico {
   nome: string;
   descricao: string;
   preco: number;
-  imagens: Array<String>;
+  imagens: string;
   fornecedorId: number;
 }

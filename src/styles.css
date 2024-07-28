@@ -42,3 +42,25 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
         transform: translateY(0);
     }
 }
+
+    /* width */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--primary-container); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--secondary); 
+    border-radius: 2px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }

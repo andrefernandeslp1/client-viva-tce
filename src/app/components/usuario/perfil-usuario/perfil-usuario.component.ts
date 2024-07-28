@@ -1,7 +1,7 @@
 import { Component, inject, signal, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
-import { UsuarioService } from '../service/usuario.service';
+import { UsuarioService } from '../../../service/usuario.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CompraService } from '../../../service/compra.service';
 import { ListCompraComponent } from '../../compra/list-compra/list-compra.component';

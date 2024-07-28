@@ -13,10 +13,10 @@
   <tbody>
     @for(compra of compras; track compra.id; let idx  = $index) {
       <tr>
-        <td scope="row">{{ servicos[idx].nome }}</td>
+        <td scope="row">{{ compra.servico.nome }}</td>
         <td>{{ compra.data }}</td>
         <td>{{ compra.assinatura ? "Sim" : "Não" }}</td>
-        <td>{{ servicos[idx].preco }}</td>
+        <td>{{ compra.servico.preco }}</td>
         <td>
           <!-- <i class="fa-solid fa-eye p-1" routerLink="{{compra.id}}"></i> -->
           <i class="fa-solid fa-trash-can p-1" (click)="deletar(compra.id)"></i>

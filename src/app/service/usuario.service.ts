@@ -1,9 +1,9 @@
 import { Injectable, signal } from '@angular/core';
-import { BaseService } from '../../../service/base.service';
-import { Servico } from '../../../model/servico';
+import { BaseService } from './base.service';
+import { Servico } from '../model/servico';
 import { HttpClient } from '@angular/common/http';
-import { AppService } from '../../../service/app.service';
-import { Usuario } from '../../../model/usuario';
+import { AppService } from './app.service';
+import { Usuario } from '../model/usuario';
 
 @Injectable({
   providedIn: 'root'

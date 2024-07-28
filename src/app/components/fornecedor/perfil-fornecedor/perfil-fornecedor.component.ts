@@ -3,11 +3,12 @@ import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { Fornecedor } from '../../../model/fornecedor';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { FornecedorService } from '../service/fornecedor.service';
+import { FornecedorService } from '../../../service/fornecedor.service';
 import { AppService } from '../../../service/app.service';
 import { HttpClient } from '@angular/common/http';
 import { ListServicoFornecedorComponent } from "./list-servico-fornecedor/list-servico-fornecedor.component";
 import { Observable } from 'rxjs';
+import { ServicoService } from '../../../service/servico.service';
 
 @Component({
   selector: 'app-perfil-fornecedor',
@@ -26,6 +27,7 @@ export class PerfilFornecedorComponent {
   route = inject(ActivatedRoute);
   router = inject(Router);
   fornecedorService = inject(FornecedorService);
+  servicoService = inject(ServicoService)
   appService = inject(AppService);
   httpClient = inject(HttpClient);
 
@@ -60,6 +62,6 @@ export class PerfilFornecedorComponent {
 
   // FORMA DE RECUPERAR SERVICOS POR ID DO FORNECEDOR NO ESTILO JSON-SERVER //
   listServicosByFornecedorId(id: number) {
-    return this.fornecedorService.getServicos(id)
+    return this.servicoService.getByFornecedor(id)
   }
 }

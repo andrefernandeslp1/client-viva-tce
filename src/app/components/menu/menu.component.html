@@ -1,6 +1,8 @@
 
 <ul class="d-flex flex-row">
    @for (item of menu; track $index) {
-      <li [class]="isSelected(item.path)? 'selected' : ''" [routerLink]="item.path">{{item.nome}}</li>
+      @if(!item.role || item.role === userLogged().role) {
+         <li [class]="isSelected(item.path)? 'selected' : ''" [routerLink]="item.path">{{item.nome}}</li>
+      }
    }
 </ul>

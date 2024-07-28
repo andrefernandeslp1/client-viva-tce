@@ -6,7 +6,7 @@
         <div class="coluna-1">
             <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-inner">
-                    @for(imagem of servico.imagens; track $index){
+                    @for(imagem of servico.imagens.split(" ; "); track $index){
                         <div [class]="$index === 0? 'carousel-item active' : 'carousel-item'">
                             <img src="{{imagem}}" class="d-block w-100" alt="Imagem do serviço">
                         </div>
@@ -25,11 +25,9 @@
             </div>
         </div>
         <div class="coluna-2">
-            <h4 class="mt-2">Nome: {{servico.nome}}
-                @if(userLogged().role === 'vendedor' && userLogged().fornecedorId === servico.fornecedorId) {
-                  <i class="fa-solid fa-pen p-1" routerLink="edit" style="cursor: pointer;"></i>
-                }
-              </h4>
+            @if(userLogged().role === 'vendedor' && userLogged().fornecedorId == servico.fornecedorId) {
+                <i class="fa-solid fa-pen p-1" (click)="router.navigate(['viva-tce', 'servicos', servico.fornecedorId, servico.id, 'edit'])" style="cursor: pointer;"></i>
+            }
             <h4 class="mt-2">Nome: {{servico.nome}}</h4>
             <h5 class="mt-2">Descrição: {{servico.descricao}}</h5>
             <h6 class="mt-2 text-success">Valor: {{servico.preco}} R$</h6>

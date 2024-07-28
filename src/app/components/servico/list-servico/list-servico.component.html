@@ -2,7 +2,7 @@
 <main class="card-deck p-4">
     @for(servico of servicos$ | async; track servico.id; let idx = $index) {
       <div class="card" style="width: 18rem;">
-        <img [src]="servico.imagens[0]" class="card-img-top" alt="...">
+        <img [src]="servico.imagens.split(' ; ')[0]" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">{{servico.nome}}</h5>
           <p class="card-text">{{servico.descricao}}</p>

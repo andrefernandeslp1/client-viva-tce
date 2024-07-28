@@ -11,7 +11,7 @@
     <p>{{usuario().nome}}</p>
     <i class="fa-solid fa-circle-user"></i>
     <div class="dropdown-menu">
-        <a class="dropdown-item"><i class="fa-solid fa-edit"></i> Editar Perfil</a>
+        <a class="dropdown-item" (click)="editarPerfil()"><i class="fa-solid fa-edit"></i> Editar Perfil</a>
         <a class="dropdown-item" (click)="logout()"><i class="fa-solid fa-sign-out"></i> Sair da conta</a>
     </div>
   </div>

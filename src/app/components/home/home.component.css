@@ -1,0 +1,8 @@
+.page {
+    position: fixed;
+    top: var(--header--height);
+    width: 100vw;
+    height: calc(100vh - var(--header--height));
+    overflow-y: scroll;
+    overflow-x: hidden;
+}

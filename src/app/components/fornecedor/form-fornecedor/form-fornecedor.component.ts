@@ -1,8 +1,8 @@
-import { Component, inject, WritableSignal } from '@angular/core';
+import { Component, inject, OnInit, WritableSignal } from '@angular/core';
 import { HeaderComponent } from "../../header/header.component";
 import { MenuComponent } from "../../menu/menu.component";
 import { Fornecedor } from '../../../model/fornecedor';
-import { FornecedorService } from '../service/fornecedor.service';
+import { FornecedorService } from '../../../service/fornecedor.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -18,7 +18,7 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
   templateUrl: './form-fornecedor.component.html',
   styleUrl: './form-fornecedor.component.css'
 })
-export class FormFornecedorComponent {
+export class FormFornecedorComponent implements OnInit {
 
   form: FormGroup;
 
@@ -29,13 +29,25 @@ export class FormFornecedorComponent {
 
   fornecedores!: WritableSignal<Fornecedor[]>;
 
+  fornecedorId: string | null;
+
   constructor() {
+    this.fornecedorId = this.route.snapshot.paramMap.get('id')
     this.form = this.formBuilder.group({
+      id: [this.fornecedorId],
       nome: [null],
       contato: [null],
       logo: [null]
     });
     this.fornecedores = this.fornecedorService.fornecedores;
+  }
+
+  ngOnInit(): void {
+    if(this.fornecedorId) {
+      this.fornecedorService.getOne(parseInt(this.fornecedorId)).subscribe((data) => {
+        this.form.patchValue(data)
+      })
+    }
   }
 
   onAdd() {
@@ -45,7 +57,7 @@ export class FormFornecedorComponent {
   }
 
   onEdit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get('id')
     this.fornecedorService.update(id, this.form.value).subscribe(() => {
       this.router.navigate(['/viva-tce/fornecedores']);
     });

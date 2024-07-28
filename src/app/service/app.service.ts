@@ -18,30 +18,28 @@ export class AppService {
   private API_URL = 'http://localhost:5201/Authentication';
 
   constructor(private http: HttpClient, private snackBar: MatSnackBar) {
-    const usuarioLogado = this.jwtTokenService.getUser()
-    if(usuarioLogado){
-      this.userLogged.set(usuarioLogado)
-    }
+    this.userLogged.set(this.jwtTokenService.getUser())
   }
 
-  login(usuario: Usuario, onSuccess: Function) {
+  login(usuario: Usuario, onSuccess?: Function) {
     return this.http.post<any>(this.API_URL + "/login", usuario, { observe: 'response' }).subscribe({
       next: (response => {
         const token = response.body?.token;
         if (token) {
           localStorage.setItem('jwt-token', token);
         }
-        onSuccess()
+        this.userLogged.set(this.jwtTokenService.getUser())
+        if(onSuccess) onSuccess()
       }),
       error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
     })
   }
 
-  cadastrar(usuario: Usuario, onSuccess: Function) {
+  cadastrar(usuario: Usuario, onSuccess?: Function) {
     return this.http.post<any>(this.API_URL + "/cadastrar", usuario, { observe: 'response' }).subscribe({
       next: (response => {
         this.snackBar.open(`${response.body.nome} foi cadastrado com sucesso` , "", {duration:3000 })
-        onSuccess()
+        if(onSuccess) onSuccess()
       }),
       error: (e) => this.snackBar.open(e.error , "⚠️", {duration:3000 }),
     })
@@ -50,6 +48,5 @@ export class AppService {
   logout() {
     localStorage.clear();
     this.userLogged.set({});
-    this.jwtTokenService.decodedToken = undefined;
   }
 }
