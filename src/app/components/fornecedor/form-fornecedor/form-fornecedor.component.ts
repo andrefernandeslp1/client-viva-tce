@@ -34,7 +34,7 @@ export class FormFornecedorComponent implements OnInit {
   constructor() {
     this.fornecedorId = this.route.snapshot.paramMap.get('id')
     this.form = this.formBuilder.group({
-      id: [this.fornecedorId],
+      id: [this.fornecedorId??0],
       nome: [null],
       contato: [null],
       logo: [null]

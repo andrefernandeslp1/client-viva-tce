@@ -45,7 +45,7 @@ export class FormUsuarioComponent {
     this.userLogged = this.appService.userLogged
     this.usuarioId = this.route.snapshot.paramMap.get('id')
     this.form = this.formBuilder.group({
-      id: [this.usuarioId],
+      id: [this.usuarioId??0],
       nome: [null],
       email: [null],
       role: [null],
@@ -76,19 +76,44 @@ export class FormUsuarioComponent {
     });
   }
 
-  onEdit(id: any, usuario : any) {
-    this.appService.login(this.form.value, () => {
+  // onEdit(id: any, usuario : any) {
+  //   this.appService.login(this.form.value, () => {
+  //     this.usuarioService.update(id, usuario).subscribe(() => {
+  //       if(id == this.userLogged().id){
+  //         this.userLogged.set(this.form.value)
+  //       }
+  //       if(this.userLogged().role === 'admin') {
+  //         this.router.navigate(['/viva-tce/usuarios']);
+  //       } else {
+  //         this.router.navigate(['/viva-tce']);
+  //       }
+  //     });
+  //   })
+  // }
+  onEdit(id: any, usuario: any) {
+    // Verifica se o usuário logado está editando seu próprio perfil
+    const isEditingOwnProfile = id === this.userLogged().id;
+
+    // Função para atualizar o usuário
+    const updateUser = () => {
       this.usuarioService.update(id, usuario).subscribe(() => {
-        if(id == this.userLogged().id){
-          this.userLogged.set(this.form.value)
+        if (isEditingOwnProfile) {
+          this.userLogged.set(this.form.value);
         }
-        if(this.userLogged().role === 'admin') {
+        if (this.userLogged().role === 'admin') {
           this.router.navigate(['/viva-tce/usuarios']);
         } else {
           this.router.navigate(['/viva-tce']);
         }
       });
-    })
+    };
+
+    // Se o usuário logado está editando seu próprio perfil, realiza o login novamente
+    if (isEditingOwnProfile) {
+      this.appService.login(this.form.value, updateUser);
+    } else {
+      updateUser();
+    }
   }
 
   getUserById() {
