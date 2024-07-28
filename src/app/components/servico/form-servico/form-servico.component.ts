@@ -39,7 +39,7 @@ export class FormServicoComponent implements OnInit {
     this.idServico = route.snapshot.paramMap.get('id');
     this.userLogged = this.appService.userLogged;
     this.form = this.formBuilder.group({
-      id: [this.idServico],
+      id: [this.idServico??0],
       nome: [null],
       descricao: [null],
       preco: [null],
