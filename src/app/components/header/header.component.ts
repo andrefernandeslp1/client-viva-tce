@@ -39,4 +39,8 @@ export class HeaderComponent {
   editarPerfil(): void {
     this.router.navigate(['viva-tce', 'usuarios', this.usuario().id, 'edit'])
   }
+
+  minhaConta(): void {
+    this.router.navigate(['viva-tce', 'usuarios', this.usuario().id, 'perfil'])
+  }
 }
