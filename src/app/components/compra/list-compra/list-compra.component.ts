@@ -6,13 +6,15 @@ import { ServicoService } from '../../../service/servico.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { TituloComponent } from "../../titulo/titulo.component";
+import { NgxMaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-list-compra',
   standalone: true,
   imports: [
     RouterModule,
-    TituloComponent
+    TituloComponent,
+    NgxMaskPipe
 ],
   templateUrl: './list-compra.component.html',
   styleUrl: './list-compra.component.css'

@@ -16,7 +16,7 @@
         <td scope="row">{{ compra.servico.nome }}</td>
         <td>{{obterDataFormatada(compra.data)}}</td>
         <td>{{ compra.assinatura ? "Sim" : "Não" }}</td>
-        <td>R$ {{ compra.servico.preco }}</td>
+        <td>R$ {{ compra.servico.preco | mask: '0*.00' }}</td>
         <td>
           <i class="fa-solid fa-trash-alt p-1" (click)="deletar(compra.id)"></i>
         </td>
