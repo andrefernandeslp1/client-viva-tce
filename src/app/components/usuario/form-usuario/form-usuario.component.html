@@ -1,33 +1,35 @@
-<app-titulo [showBtn]="false" [titulo]="usuarioId? 'Editar Perfil' : 'Cadastrar Usuário'"></app-titulo>
-  <form class="form-group p-4" [formGroup]="form" >
+
+<div class="container border rounded shadow p-4 mt-3">
+  <app-titulo [showBtn]="false" [titulo]="usuarioId? 'Editar Perfil' : 'CADASTRO DE USUÁRIO'"></app-titulo>
+  <form class="form-group mt-3" [formGroup]="form" >
     <div class="mb-3">
       <label class="form-label">Nome</label>
       <input type="text" class="form-control" formControlName="nome">
     </div>
     <div class="mb-3">
       <label class="form-label">Email</label>
-      <input type="text" class="form-control" formControlName="email">
+      <input type="email" class="form-control" formControlName="email">
     </div>
     <div class="mb-3">
       <label class="form-label">Telefone</label>
-      <input type="text" class="form-control" formControlName="telefone">
+      <input type="text" class="form-control" mask="(00) 00000-0000" formControlName="telefone">
     </div>
     <div class="mb-3">
-      <label class="form-label">{{usuarioId? 'Confirme a senha' : 'Senha'}}</label>
+      <label class="form-label">{{userLogged().id.toString() === usuarioId? 'Confirme a senha' : 'Senha'}}</label>
       <input [type]="usuarioId? 'password' : 'text'" class="form-control" formControlName="senha">
     </div>
 
     @if (userLogged().role === 'admin') {
       <label class="form-label">Papel</label>
-      <select class="form-select" formControlName="role">
+      <select class="form-select form-select" formControlName="role">
         @for(role of roles; track role; let idx = $index) {
-          <option value="{{role}}">{{role}}</option>
+          <option value="{{role}}">{{role.charAt(0).toUpperCase() + role.slice(1)}}</option>
         }
       </select>
 
       @if(this.form.get('role')?.value == 'vendedor') {
         <label class="form-label mt-2">Fornecedor</label>
-        <select class="form-select" formControlName="fornecedorId">
+        <select class="form-select form-select" formControlName="fornecedorId">
           @for(fornecedor of fornecedores(); track fornecedor; let idx = $index) {
             <option value="{{fornecedor.id}}">{{fornecedor.nome}}</option>
           }
@@ -36,10 +38,11 @@
     }
 
     @if(usuarioId == null) {
-      <button class="btn btn-success mt-2" (click)="onAdd()">Cadastrar</button>
+      <button class="btn btn-success mt-3" (click)="onAdd()">Cadastrar</button>
 
     }@else {
-      <button class="btn btn-success mt-2" (click)="onEdit(usuarioId, form.value)">Editar</button>
+      <button class="btn btn-success mt-3" (click)="onEdit(usuarioId, form.value)">Editar</button>
     }
 
   </form>
+</div>

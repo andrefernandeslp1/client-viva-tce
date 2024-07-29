@@ -1,3 +1,5 @@
+import { Fornecedor } from "./fornecedor";
+
 export interface Usuario {
   id: number;
   nome: string;
@@ -6,4 +8,5 @@ export interface Usuario {
   telefone?: string;
   role: string;
   fornecedorId?: number;
+  fornecedor?: Fornecedor;
 }

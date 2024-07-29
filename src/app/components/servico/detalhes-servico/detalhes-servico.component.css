@@ -28,11 +28,44 @@
 .coluna-1, .coluna-2 {
   flex: 1;
   min-width: 300px;
+  display: flex;
+  flex-direction: column;
 }
 .carousel-inner img {
   height: 400px;
   object-fit: cover;
 }
-.carousel-item img {
-  border-radius: 10px;
+.carousel-item img, .coluna-1 {
+  border-radius: 50px 0 0 50px;
+  overflow: hidden;
+}
+
+.corpo {
+  border-radius: 50px;
+}
+
+.coluna-2 .d-flex {
+  justify-content: space-between;
+}
+
+.coluna-2 {
+  color: var(--primary);
+  word-wrap: break-word;
+  text-justify: inter-word;
+  text-align: justify;
+}
+
+.coluna-2 .btn {
+  align-self: flex-end;
+  margin-top: auto;
+} 
+
+.preco {
+  background-color: var(--primary);
+  color: var(--on-primary);
+}
+
+h4 {
+  text-transform: uppercase;
+  font-weight: bold;
 }

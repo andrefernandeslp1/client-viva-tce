@@ -1,16 +1,36 @@
-<app-titulo titulo="LISTAGEM DE FORNECEDORES" [showBtn]="podeCadastrar()" (btnFn)="cadastrar()"></app-titulo>
+<div class="p-4">
+  <app-titulo titulo="LISTAGEM DE FORNECEDORES" [showFilter]="true" (searchFn)="pesquisar($event)" [showBtn]="podeCadastrar()" (btnFn)="cadastrar()"></app-titulo>
+</div>
 
-<main class="card-deck p-4">
-  @for(fornecedor of fornecedores(); track fornecedor.id; let idx = $index) {
-    <div class="card" style="width: 18rem;">
-      <img [src]="fornecedor.logo" class="card-img-top" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">{{fornecedor.nome}}</h5>
-        <p class="card-text">{{fornecedor.contato}}</p>
-        <a class="btn btn-success" routerLink="{{fornecedor.id}}">Detalhes</a>
+@if (fornecedores$ | async; as fornecedores) {
+  <main class="card-deck p-4">
+    @for(fornecedor of fornecedores; track fornecedor.id; let idx = $index) {
+      <div class="card" style="width: 18rem;">
+        <img [src]="fornecedor.logo" class="card-img-top" [alt]="'Logo de ' + fornecedor.nome">
+        <div class="card-body">
+          <h5 class="card-title">{{fornecedor.nome}}</h5>
+          <p class="card-text">{{fornecedor.contato | mask: '(00) 000000000'}}</p>
+          <div class="d-flex flex-row align-items-center">
+            <a class="btn btn-success" routerLink="{{fornecedor.id}}">Detalhes</a>
+            <div class="icons">
+              @if(podeEditar(fornecedor.id)) {
+                <a (click)="editar(fornecedor.id)"><i class="fa fa-edit"></i></a>
+              }
+              @if (podeRemover()) {
+                <a (click)="remover(fornecedor.id)"><i class="fa fa-trash-alt"></i></a>
+              }
+            </div>
+          </div>
+        </div>
       </div>
+    }@empty {
+      <p>Nenhum serviço encontrado.</p>
+    }
+  </main>
+} @else {
+  <div class="d-flex justify-content-center align-items-center w-100 h-100">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Carregando...</span>
     </div>
-  }@empty {
-    <p>Nenhum serviço cadastrado</p>
-  }
-</main>
+  </div>
+}

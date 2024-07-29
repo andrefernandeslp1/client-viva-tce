@@ -1,1 +1,43 @@
 
+.form *:not(button) {
+    color: var(--primary);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 75%;
+    align-self: center;
+}
+
+
+label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.container {
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    float: right;
+    margin-left: auto;
+}
+
+img {
+    width: 15vw;
+    height: auto;
+    border-radius: 5px;
+}
+
+.img-array button{
+    margin-right: 15px;
+}
+
+.img-array i {
+    color: white;
+}

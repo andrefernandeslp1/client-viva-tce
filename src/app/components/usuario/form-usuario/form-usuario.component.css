@@ -1,0 +1,28 @@
+form *:not(button) {
+    color: var(--primary);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    width: 75%;
+    align-self: center;
+}
+
+
+label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.container {
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    float: right;
+    margin-left: auto;
+}

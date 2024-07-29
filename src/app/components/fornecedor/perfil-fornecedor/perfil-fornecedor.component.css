@@ -1,19 +1,33 @@
 .container {
   margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .corpo {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  color: var(--primary);
+  justify-content: center;
+  margin: auto;
 }
-.coluna-1, .coluna-2 {
+
+.corpo, img {
+  border-radius: 150px;
+}
+
+img {
+  margin-right: auto;
+  width: 10vw;
+  height: 10vw;
+}
+
+.info {
+  text-align: center;
   flex: 1;
-  min-width: 300px;
 }
-.carousel-inner img {
-  height: 400px;
-  object-fit: cover;
-}
-.carousel-item img {
-  border-radius: 10px;
+
+.corpo .btn {
+  width: fit-content;
+  margin: auto;
 }

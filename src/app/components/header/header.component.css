@@ -43,9 +43,10 @@ img {
   height: calc(var(--header--height) - var(--border-size));
 }
 
-.user, img {
+.user, .logo {
   cursor: pointer;
 }
+
 
 * {
   --border-size: 5px;
@@ -80,4 +81,12 @@ p {
 
 .dropdown-menu a:active {
   background-color: var(--primary-container);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  height: var(--header--height);
+  color: var(--header-color);
+  align-items: center;
 }

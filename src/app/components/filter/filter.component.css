@@ -1,0 +1,25 @@
+.limpar {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    transition: all 500ms ease-in-out;
+    color: gray;
+    z-index: 99;
+    right: calc((var(--btn-width) + 25px));
+}
+
+.limpar:hover {
+    color: red;
+}
+
+.btn {
+    width: var(--btn-width);
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+* {
+    --btn-width: 50px
+}

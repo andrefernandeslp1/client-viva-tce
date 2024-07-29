@@ -8,6 +8,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../../../service/app.service';
 import { FormsModule } from '@angular/forms';
+import { TituloComponent } from "../../titulo/titulo.component";
+import { NgxMaskDirective } from 'ngx-mask';
 
 @Component({
   selector: 'app-form-servico',
@@ -17,14 +19,18 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     ReactiveFormsModule,
     RouterModule,
-    FormsModule
-  ],
+    FormsModule,
+    TituloComponent,
+    NgxMaskDirective
+],
   templateUrl: './form-servico.component.html',
   styleUrl: './form-servico.component.css'
 })
 export class FormServicoComponent implements OnInit {
 
   form: FormGroup;
+
+  private snackBar = inject(MatSnackBar)
 
   formBuilder = inject(FormBuilder);
   router = inject(Router);
@@ -39,11 +45,11 @@ export class FormServicoComponent implements OnInit {
     this.idServico = route.snapshot.paramMap.get('id');
     this.userLogged = this.appService.userLogged;
     this.form = this.formBuilder.group({
-      id: [this.idServico],
-      nome: [null],
-      descricao: [null],
-      preco: [null],
-      imagens: [null],
+      id: [this.idServico??0],
+      nome: [null, Validators.required],
+      descricao: [null, Validators.required],
+      preco: [null, Validators.required],
+      imagens: [null, Validators.required],
       fornecedorId: [this.userLogged().fornecedorId]
     });
   }
@@ -58,15 +64,23 @@ export class FormServicoComponent implements OnInit {
   }
 
   onAdd() {
-    this.servicoService.create(this.form.value).subscribe(() => {
-      this.router.navigate(['/viva-tce']);
-    });
+    if(this.form.valid) {
+      this.servicoService.create(this.form.value).subscribe(() => {
+        this.router.navigate(['/viva-tce']);
+      });
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
   }
 
   onEdit(id: any, servico : any) {
-    this.servicoService.update(id, servico).subscribe(() => {
-      this.router.navigate(['/viva-tce']);
-    });
+    if(this.form.valid) {
+      this.servicoService.update(id, servico).subscribe(() => {
+        this.router.navigate(['/viva-tce']);
+      });
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
   }
 
   imagemURL = '';

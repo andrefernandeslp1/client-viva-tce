@@ -1,39 +1,40 @@
 
-<div class="container">
-  <h4 class="mt-2">Form Servico</h4>
-  <form class="form-group" [formGroup]="form" >
-    <div class="mb-3">
-      <label class="form-label">Nome</label>
-      <input type="text" class="form-control" formControlName="nome">
+<div class="container border shadow p-4 mt-3 mb-3">
+  <app-titulo [showBtn]="false" [titulo]="idServico? 'EDITAR SERVIÇO' : 'CADASTRO DE SERVIÇO'"></app-titulo>
+    <div class="form mt-3">
+      <form class="form-group" [formGroup]="form">
+        <div class="mb-3">
+          <label class="form-label">Nome</label>
+          <input type="text" class="form-control" formControlName="nome" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Descrição</label>
+          <input type="text" class="form-control" formControlName="descricao" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Preço</label>
+          <input type="number" class="form-control" formControlName="preco" required>
+        </div>
+      </form>
+  
+      <label class="form-label mt-2">URL da Imagem</label>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" [(ngModel)]="imagemURL" name="imagemURL" placeholder="URL da imagem" (keyup.enter)="addImagem()">
+        <button class="btn btn-outline-success" (click)="addImagem()">Adicionar Imagem</button>
+      </div>
+  
+      @for(imagemURL of imagemArray; track imagemURL; let idx = $index) {
+        <div class="d-flex flex-row align-items-center border rounded shadow img-array">
+          <img class="mb-2" [src]="imagemURL"/>
+          <button aria-label="Remover imagem" type="button" class="btn btn-danger" style="float:right" (click)="removerURL(idx)"><i class="fa fa-trash-alt"></i></button>
+        </div>
+      }
+  
+      @if(idServico == null) {
+        <button class="btn btn-success mt-3" (click)="onAdd()">Cadastrar</button>
+  
+      }@else {
+        <button class="btn btn-success mt-3" (click)="onEdit(idServico, form.value)">Editar</button>
+      }
     </div>
-    <div class="mb-3">
-      <label class="form-label">Descrição</label>
-      <input type="text" class="form-control" formControlName="descricao">
-    </div>
-    <div class="mb-3">
-      <label class="form-label">Preço</label>
-      <input type="number" class="form-control" formControlName="preco">
-    </div>
-
-  </form>
-
-    <label class="form-label mt-2">URL da Imagem</label>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" [(ngModel)]="imagemURL" name="imagemURL" placeholder="URL da imagem" (keyup.enter)="addImagem()">
-      <button class="btn btn-outline-success" (click)="addImagem()">Adicionar Imagem</button>
-    </div>
-
-    @for(imagemURL of imagemArray; track imagemURL; let idx = $index) {
-      <p>- {{imagemURL}}<button type="button" class="btn btn-danger btn-sm" style="float:right" (click)="removerURL(idx)">Remover</button></p>
-    }
-
-    @if(idServico == null) {
-      <button class="btn btn-success" (click)="onAdd()">Cadastrar</button>
-
-    }@else {
-      <button class="btn btn-success" (click)="onEdit(idServico, form.value)">Editar</button>
-    }
-
-
-
 </div>

@@ -1,15 +1,35 @@
-<app-titulo titulo="LISTAGEM DE SERVIÇOS" [showBtn]="podeCadastrar()" (btnFn)="novoServico()"></app-titulo>
-<main class="card-deck p-4">
-    @for(servico of servicos$ | async; track servico.id; let idx = $index) {
-      <div class="card" style="width: 18rem;">
-        <img [src]="servico.imagens.split(' ; ')[0]" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{servico.nome}}</h5>
-          <p class="card-text">{{servico.descricao}}</p>
-          <a class="btn btn-success" routerLink="{{servico.id}}">Detalhes</a>
+<div class="p-4">
+  <app-titulo titulo="LISTAGEM DE SERVIÇOS" [showBtn]="podeCadastrar()" (searchFn)="pesquisar($event)" (btnFn)="novoServico()" [showFilter]="true"></app-titulo>
+</div>
+@if(servicos$ | async; as servicos) {
+  <main class="card-deck p-4">
+      @for(servico of servicos; track servico.id; let idx = $index) {
+        <div class="card">
+          <img [src]="servico.imagens.split(' ; ')[0]" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{servico.nome}}</h5>
+            <p class="card-text">{{servico.descricao}}</p>
+            <div class="d-flex flex-row align-items-center">
+              <a class="btn btn-success" routerLink="{{servico.id}}">Detalhes</a>
+              <div class="icons">
+                @if(podeEditar(servico.fornecedorId)) {
+                  <a (click)="editar(servico.id, servico.fornecedorId)"><i class="fa fa-edit"></i></a>
+                }
+                @if (podeRemover(servico.fornecedorId)) {
+                  <a (click)="remover(servico.id)"><i class="fa fa-trash-alt"></i></a>
+                }
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    }@empty {
-      <p>Nenhum serviço cadastrado</p>
-    }
-</main>
+      }@empty {
+        <p>Nenhum serviço encontrado.</p>
+      }
+  </main>
+} @else {
+  <div class="d-flex justify-content-center align-items-center w-100 h-100">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Carregando...</span>
+    </div>
+  </div>
+}

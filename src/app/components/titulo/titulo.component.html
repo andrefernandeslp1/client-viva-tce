@@ -1,5 +1,8 @@
-<div class="d-flex flex-row p-4">
+<div class="d-flex flex-row ">
     <h1>{{titulo}}</h1>
+    @if (showFilter) {
+        <app-filter (searchFn)="onSearch($event)"></app-filter>
+    }
     @if (showBtn) {
         <button (click)="onClick()" class="btn btn-success">{{btnLabel}}</button>
     }

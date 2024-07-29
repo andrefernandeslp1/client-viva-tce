@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 import { ListServicoFornecedorComponent } from "./list-servico-fornecedor/list-servico-fornecedor.component";
 import { Observable } from 'rxjs';
 import { ServicoService } from '../../../service/servico.service';
+import { TituloComponent } from "../../titulo/titulo.component";
+import { NgxMaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-perfil-fornecedor',
@@ -17,7 +19,9 @@ import { ServicoService } from '../../../service/servico.service';
     HeaderComponent,
     MenuComponent,
     RouterModule,
-    ListServicoFornecedorComponent
+    ListServicoFornecedorComponent,
+    TituloComponent,
+    NgxMaskPipe
 ],
   templateUrl: './perfil-fornecedor.component.html',
   styleUrl: './perfil-fornecedor.component.css'

@@ -25,6 +25,7 @@
     "bootstrap": "^5.3.3",
     "json-server": "^0.16.3",
     "jwt-decode": "^4.0.0",
+    "ngx-mask": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

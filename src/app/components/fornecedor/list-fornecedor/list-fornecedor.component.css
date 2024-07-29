@@ -13,3 +13,48 @@ img {
   height: 200px;
 }
 
+.card i {
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.card i:hover {
+  cursor: pointer;
+  animation: shake infinite 1s;
+}
+
+.card .icons {
+  margin-left: auto;
+  float: right;
+}
+
+.card .fa.fa-trash-alt:hover {
+  color: darkred;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  transition: all 500ms ease-in-out;
+}
+
+.card-title {
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+
+.card-text {
+  -webkit-line-clamp: 3;
+  height: 4.8rem;
+  -webkit-box-orient: vertical;
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+

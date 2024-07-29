@@ -1,0 +1,31 @@
+img {
+    height: 100;
+    width: auto;
+    padding: 0;
+}
+
+.perfil, img {
+    border-radius: 50px;
+}
+
+.perfil a {
+    margin-left: auto;
+}
+
+.perfil {
+    color: var(--primary);
+    height: 15vh;
+}
+
+.perfil h4, p {
+    margin: 0;
+}
+
+.role {
+    background-color: var(--primary);
+    color: var(--on-primary);
+    text-transform: uppercase;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-left: 10px;
+}

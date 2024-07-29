@@ -1,14 +1,21 @@
 h1 {
     color: var(--primary);
     font-size: 35px;
-    flex: 1;
     text-transform: uppercase;
+    margin: 0;
+    flex: 2;
 }
 
 div{
-    width: 100vw;
+    width: 100%;
+    align-items: center;
+}
+
+app-filter {
+    width: 20%;
 }
 
 button {
+    margin-left: 1%;
     justify-content: flex-end;
 }

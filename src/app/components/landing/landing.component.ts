@@ -5,13 +5,15 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppService } from '../../service/app.service';
 import { Location } from '@angular/common';
+import { NgxMaskDirective, NgxMaskPipe } from 'ngx-mask';
 
 @Component({
   selector: 'app-landing',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    NgxMaskDirective
   ],
   templateUrl: './landing.component.html',
   styleUrl: './landing.component.css'
@@ -57,12 +59,16 @@ export class LandingComponent {
       this.service.login(this.loginForm.value, () => {
         this.router.navigate(['../viva-tce'])
       })
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
     }
   }
 
   cadastrar() {
     if(this.cadastroForm.valid)
       this.service.cadastrar(this.cadastroForm.value, () => {this.isLogin = true})
+    else
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
   }
 
 }

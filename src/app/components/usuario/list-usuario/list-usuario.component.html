@@ -1,12 +1,14 @@
+<div class="p-4">
+  <app-titulo titulo="LISTAGEM DE USUÁRIOS" [showFilter]="true" (searchFn)="pesquisar($event)" (btnFn)="onCadastrar()" [showBtn]="podeCadastrar()"></app-titulo>
+</div>
 @if (usuarios$ | async; as usuarios) {
-  <app-titulo titulo="LISTAGEM DE USUÁRIOS" (btnFn)="onCadastrar()" [showBtn]="podeCadastrar()"></app-titulo>
   <table class="table table-striped text-center">
     <thead>
       <tr>
         <th scope="col">Nome</th>
         <th scope="col">E-mail</th>
         <th scope="col">Papel</th>
-        <th scope="col">Fornecedor ID</th>
+        <th scope="col">Fornecedor</th>
         <th scope="col">Ações</th>
       </tr>
     </thead>
@@ -16,8 +18,8 @@
           <td scope="row">{{ usuario.nome }}</td>
           <td>{{ usuario.email }}</td>
           <td>{{ usuario.role }}</td>
-          @if(usuario.fornecedorId) {
-            <td>{{usuario.fornecedorId}}</td>
+          @if(usuario.fornecedor) {
+            <td>{{usuario.fornecedor.nome}}</td>
           }
           @else {
             <td>-</td>
@@ -25,15 +27,21 @@
           <td>
             <i class="fa-solid fa-eye p-1" (click)="verPerfil(usuario.id)"></i>
             <i class="fa-solid fa-pen p-1" routerLink="{{usuario.id}}/edit"></i>
-            <i class="fa-solid fa-trash-can p-1" (click)="deletar(usuario.id)"></i>
+            <i class="fa-solid fa-trash-alt p-1" (click)="deletar(usuario.id)"></i>
           </td>
         </tr>
       }
       @empty {
         <tr>
-          <td colspan="3">No users found</td>
+          <td colspan="5">Nenhum usuário foi encontrado.</td>
         </tr>
       }
     </tbody>
   </table>
+} @else {
+  <div class="d-flex justify-content-center align-items-center w-100 h-100">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Carregando...</span>
+    </div>
+  </div>
 }

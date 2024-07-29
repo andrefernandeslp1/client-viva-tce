@@ -5,10 +5,12 @@ import { UsuarioService } from '../../../service/usuario.service';
 import { Fornecedor } from '../../../model/fornecedor';
 import { FornecedorService } from '../../../service/fornecedor.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormGroup, FormBuilder, FormsModule, ReactiveFormsModule, Validators  } from '@angular/forms';
 import { AppService } from '../../../service/app.service';
 import { Usuario } from '../../../model/usuario';
 import { TituloComponent } from "../../titulo/titulo.component";
+import { NgxMaskDirective } from 'ngx-mask';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-usuario',
@@ -18,7 +20,8 @@ import { TituloComponent } from "../../titulo/titulo.component";
     MenuComponent,
     FormsModule,
     ReactiveFormsModule,
-    TituloComponent
+    TituloComponent,
+    NgxMaskDirective
 ],
   templateUrl: './form-usuario.component.html',
   styleUrl: './form-usuario.component.css'
@@ -33,6 +36,8 @@ export class FormUsuarioComponent {
   formBuilder = inject(FormBuilder);
   appService = inject(AppService)
 
+  private snackBar = inject(MatSnackBar)
+
   fornecedorService = inject(FornecedorService);
 
   fornecedores!: WritableSignal<Fornecedor[]>;
@@ -45,13 +50,13 @@ export class FormUsuarioComponent {
     this.userLogged = this.appService.userLogged
     this.usuarioId = this.route.snapshot.paramMap.get('id')
     this.form = this.formBuilder.group({
-      id: [this.usuarioId],
-      nome: [null],
-      email: [null],
-      role: [null],
+      id: [this.usuarioId??0],
+      nome: [null, Validators.required],
+      email: [null, Validators.required],
+      role: [null, Validators.required],
       fornecedorId: [null],
-      senha: [null],
-      telefone: [null]
+      senha: [null, Validators.required],
+      telefone: [null, Validators.required]
     });
     this.roles = this.usuarioService.roles;
     this.fornecedores = this.fornecedorService.fornecedores;
@@ -66,29 +71,42 @@ export class FormUsuarioComponent {
   listarFornecedores() {
     this.fornecedorService.list().subscribe(fornecedores => {
       this.fornecedores.set(fornecedores);
-      console.log(fornecedores);
     });
   }
 
   onAdd() {
-    this.usuarioService.create(this.form.value).subscribe(() => {
-      this.router.navigate(['/viva-tce/usuarios']);
-    });
+    if(this.form.valid) {
+      this.usuarioService.create(this.form.value).subscribe(() => {
+        this.router.navigate(['/viva-tce/usuarios']);
+      });
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
   }
 
-  onEdit(id: any, usuario : any) {
-    this.appService.login(this.form.value, () => {
-      this.usuarioService.update(id, usuario).subscribe(() => {
-        if(id == this.userLogged().id){
-          this.userLogged.set(this.form.value)
-        }
-        if(this.userLogged().role === 'admin') {
-          this.router.navigate(['/viva-tce/usuarios']);
-        } else {
-          this.router.navigate(['/viva-tce']);
-        }
-      });
-    })
+  onEdit(id: any, usuario: Usuario) {
+    if(this.form.valid) {
+      if(this.userLogged().id.toString() === this.usuarioId )
+        this.appService.login(this.form.value, () => this.editar(id,usuario))
+      else
+        this.editar(id,usuario)
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
+  }
+
+  editar(id: any, usuario: Usuario) {
+    id = parseInt(id)
+    this.usuarioService.update(id, usuario).subscribe(() => {
+      if(id == this.userLogged().id){
+        this.userLogged.set(this.form.value)
+      }
+      if(this.userLogged().role === 'admin') {
+        this.router.navigate(['/viva-tce/usuarios']);
+      } else {
+        this.router.navigate(['/viva-tce']);
+      }
+    });
   }
 
   getUserById() {

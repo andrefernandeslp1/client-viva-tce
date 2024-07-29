@@ -5,13 +5,15 @@ import { Servico } from '../../../model/servico';
 import { ServicoService } from '../../../service/servico.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { TituloComponent } from "../../titulo/titulo.component";
 
 @Component({
   selector: 'app-list-compra',
   standalone: true,
   imports: [
     RouterModule,
-  ],
+    TituloComponent
+],
   templateUrl: './list-compra.component.html',
   styleUrl: './list-compra.component.css'
 })
@@ -20,16 +22,21 @@ export class ListCompraComponent {
   servicoService = inject(ServicoService);
   compraService = inject(CompraService);
 
-  @Input() compras!: ServicoUsuario[];
+  @Input() compras?: ServicoUsuario[];
 
-  constructor() {
-    console.log(this.compras)
+  constructor() {}
+
+  obterDataFormatada(data: Date): string {
+    data = new Date(data.valueOf())
+    return data.toLocaleDateString()
   }
 
   deletar(id: number) {
     this.compraService.delete(id).subscribe({
       next: () => {
-        this.compras = this.compras.filter(compra => compra.id !== id);
+        if(this.compras){
+          this.compras = this.compras.filter(compra => compra.id !== id);
+        }
       },
       error: (err) => {
         console.log(err);

@@ -4,7 +4,10 @@ import { MenuComponent } from "../../menu/menu.component";
 import { Fornecedor } from '../../../model/fornecedor';
 import { FornecedorService } from '../../../service/fornecedor.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TituloComponent } from "../../titulo/titulo.component";
+import { NgxMaskDirective } from 'ngx-mask';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-form-fornecedor',
@@ -13,8 +16,10 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angul
     HeaderComponent,
     MenuComponent,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    TituloComponent,
+    NgxMaskDirective
+],
   templateUrl: './form-fornecedor.component.html',
   styleUrl: './form-fornecedor.component.css'
 })
@@ -26,6 +31,7 @@ export class FormFornecedorComponent implements OnInit {
   router = inject(Router);
   route = inject(ActivatedRoute);
   formBuilder = inject(FormBuilder);
+  private snackBar = inject(MatSnackBar);
 
   fornecedores!: WritableSignal<Fornecedor[]>;
 
@@ -34,10 +40,10 @@ export class FormFornecedorComponent implements OnInit {
   constructor() {
     this.fornecedorId = this.route.snapshot.paramMap.get('id')
     this.form = this.formBuilder.group({
-      id: [this.fornecedorId],
-      nome: [null],
-      contato: [null],
-      logo: [null]
+      id: [this.fornecedorId??0],
+      nome: [null, Validators.required],
+      contato: [null, Validators.required],
+      logo: [null, Validators.required]
     });
     this.fornecedores = this.fornecedorService.fornecedores;
   }
@@ -51,16 +57,24 @@ export class FormFornecedorComponent implements OnInit {
   }
 
   onAdd() {
-    this.fornecedorService.create(this.form.value).subscribe(() => {
-      this.router.navigate(['/viva-tce/fornecedores']);
-    });
+    if(this.form.valid){
+      this.fornecedorService.create(this.form.value).subscribe(() => {
+        this.router.navigate(['/viva-tce/fornecedores']);
+      });
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
   }
 
   onEdit() {
-    const id = this.route.snapshot.paramMap.get('id')
-    this.fornecedorService.update(id, this.form.value).subscribe(() => {
-      this.router.navigate(['/viva-tce/fornecedores']);
-    });
+    if(this.form.valid){
+      const id = this.route.snapshot.paramMap.get('id')
+      this.fornecedorService.update(id, this.form.value).subscribe(() => {
+        this.router.navigate(['/viva-tce/fornecedores']);
+      });
+    } else {
+      this.snackBar.open('Preencha os campos vazios.', '', {duration: 3000})
+    }
   }
 
 }

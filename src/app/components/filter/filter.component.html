@@ -1,0 +1,7 @@
+<form class="d-flex flex-row align-items-center w-100" [formGroup]="filterForm">
+    <div class="input-group">
+        <input class="form-control" type="text" [ngModel]="searchField()" (ngModelChange)="searchField.set($event)" placeholder="Pesquisar" formControlName="search">
+        <button type="submit" (click)="pesquisar()" class="btn btn-success" aria-label="Pesquisar"><i class="fa fa-search"></i></button>
+    </div>
+    <button (click)="limpar()" [class]="searchField()? 'limpar': 'limpar hidden'" aria-label="Limpar filtros"><i class="fa fa-x"></i></button>
+</form>

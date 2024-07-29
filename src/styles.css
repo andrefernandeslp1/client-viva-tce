@@ -25,6 +25,11 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 
+.spinner-border {
+    color: var(--primary);
+}
+
+
 @keyframes fade {
     from {
         opacity: 0;
@@ -40,6 +45,21 @@ body { font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
     to {
         transform: translateY(0);
+    }
+}
+
+@keyframes shake {
+    0% {
+        rotate: 0deg;
+    }
+    25%{
+        rotate: 10 deg;
+    }
+    50% {
+        rotate: -20deg;
+    }
+    100% {
+        rotate: 10deg;
     }
 }
 

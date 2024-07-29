@@ -36,5 +36,14 @@ export abstract class BaseService<T> {
     return this.httpClient.delete(`${this.apiUrl}/${id}`, { headers });
   }
 
+  filterByNome(nome: string): Observable<T[]> {
+    const headers = new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('jwt-token'));
+    let url = `${this.apiUrl}/filter/nome/pagination?nome=${nome}`
+    if(nome.length !== 0){
+      return this.httpClient.get<T[]>(url, {headers})
+    }
+    return this.list()
+    
+  }
 
 }
